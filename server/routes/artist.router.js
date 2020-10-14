@@ -11,7 +11,7 @@ const qs = require("qs");
 //  *
 //  */
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
-let client_secret = "a6a11d1286d5445ca1c307fbb4a92b3c"; // Your secret
+let client_secret = process.env.client_secret; // Your secret
 
 router.get("/", (req, res) => {
   // GET route code here
