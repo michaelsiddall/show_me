@@ -53,8 +53,13 @@ router.get("/", (req, res) => {
             spotifyId: "38zTZcuN7nFvVJ6auhc6V3",
           };
           let spotifyObject = searchResponse.data;
-          res.send(spotifyObject);
-          // res.send({ name: spotifyObject.artists.items[0].name });
+          // res.send({ spotifyObject });
+          res.send({
+            name: spotifyObject.artists.items[0].name,
+            genre: spotifyObject.artists.items[0].genre,
+            spotifyId: spotifyObject.artists.items[0].id,
+            image: spotifyObject.artists.items[0].images,
+          });
         })
         .catch(function (error) {
           console.log("error is", error);
