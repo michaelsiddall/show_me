@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
   })
     .then(function (response) {
       let accessToken = response.data.access_token;
-      console.log("req.query.q is", req.query);
+      console.log("req.query.q is", req.query.q);
       //   res.send(JSON.stringify(req.query));
       axios
         .get("https://api.spotify.com/v1/search", {
@@ -45,13 +45,13 @@ router.get("/", (req, res) => {
           },
         })
         .then(function (searchResponse) {
-          let exampleObject = {
-            name: "Deerhunter",
-            image:
-              "https://i.scdn.co/image/ef8563081fa5394c1ec53f8e2a87a67fdec7a70d",
-            genre: "alternative dance",
-            spotifyId: "38zTZcuN7nFvVJ6auhc6V3",
-          };
+          // let exampleObject = {
+          //   name: "Deerhunter",
+          //   image:
+          //     "https://i.scdn.co/image/ef8563081fa5394c1ec53f8e2a87a67fdec7a70d",
+          //   genre: "alternative dance",
+          //   spotifyId: "38zTZcuN7nFvVJ6auhc6V3",
+          // };
           let spotifyObject = searchResponse.data;
           // res.send({ spotifyObject });
           res.send({
