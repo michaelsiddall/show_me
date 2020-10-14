@@ -56,9 +56,9 @@ router.get("/", (req, res) => {
           // res.send({ spotifyObject });
           res.send({
             name: spotifyObject.artists.items[0].name,
-            genre: spotifyObject.artists.items[0].genre,
+            genre: spotifyObject.artists.items[0].genres[0],
             spotifyId: spotifyObject.artists.items[0].id,
-            image: spotifyObject.artists.items[0].images,
+            image: spotifyObject.artists.items[0].images[0].url,
           });
         })
         .catch(function (error) {

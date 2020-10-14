@@ -24,6 +24,8 @@ class AddArtist extends Component {
   };
 
   render() {
+    console.log("this.props.store.artist is", this.props.store.artist);
+
     return (
       // Can also just use <> </> instead of divs
       <div>
@@ -36,7 +38,16 @@ class AddArtist extends Component {
         {"   "}
         <button onClick={this.searchArtist}>Search Artist on Spotify</button>
 
-        <h1>Hello</h1>
+        <h1>Artist: {this.props.store.artist.name}</h1>
+        <h1>Genre: {this.props.store.artist.genre}</h1>
+        <img
+          height="400px"
+          width="400px"
+          alt=" "
+          src={this.props.store.artist.image}
+        ></img>
+
+        <h1>Spotify Id: {this.props.store.artist.spotifyId}</h1>
       </div>
     );
   }
