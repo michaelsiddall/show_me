@@ -36,7 +36,7 @@ class AddArtist extends Component {
         {"   "}
         <button onClick={this.searchArtist}>Search Artist on Spotify</button>
 
-        <h1></h1>
+        <h1>Hello</h1>
       </div>
     );
   }
