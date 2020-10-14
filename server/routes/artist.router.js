@@ -3,21 +3,19 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("axios");
 const qs = require("qs");
+require("dotenv").config();
 
 //  * GET route template
-//  *
-//  *
-//  *
-//  *
-//  */
+
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
-let client_secret = "a6a11d1286d5445ca1c307fbb4a92b3c"; // Your secret
+let client_secret = process.env.client_secret; // Your secret
 
 router.get("/", (req, res) => {
   // GET route code here
   console.log("/search GET route");
   console.log("is authenticated?", req.isAuthenticated());
   console.log("user", req.user);
+
   axios({
     method: "post",
     url: "https://accounts.spotify.com/api/token",

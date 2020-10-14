@@ -1,31 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-import axios from "axios";
 
 class AddArtist extends Component {
   state = {
     search: "",
   };
-
-  //   searchArtist = () => {
-  //     //GET items from server via AXIOS
-  //     axios({
-  //       method: "GET",
-  //       url: "/search",
-  //     })
-  //       .then((response) => {
-  //         console.log("response", response);
-  //         console.log("response.query.query", response.query.query);
-
-  //         this.setState({
-  //           search: response.query.query,
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   };
 
   searchArtist = () => {
     console.log("Current State:", this.state);
@@ -55,6 +35,8 @@ class AddArtist extends Component {
         ></input>
         {"   "}
         <button onClick={this.searchArtist}>Search Artist on Spotify</button>
+
+        <h1></h1>
       </div>
     );
   }
