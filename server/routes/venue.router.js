@@ -21,10 +21,16 @@ router.get("/", (req, res) => {
       apikey: process.env.SONGKICK_APIKEY,
     },
   })
-    .then((response) => {
-      console.log("got back data", response.data);
-
-      res.send(response.data);
+    .then((searchVenueResponse) => {
+      console.log("got back data", searchVenueResponse.data);
+      let songKickObject = searchVenueResponse.data;
+      res.send({
+        name: songKickObject.resultsPage.results.venue[0].displayName,
+        city: songKickObject.resultsPage.results.venue[0].city.displayName,
+        state:
+          songKickObject.resultsPage.results.venue[0].city.state.displayName,
+        songKickId: songKickObject.resultsPage.results.venue[0].id,
+      });
     })
     .catch((err) => {
       console.error(err);
