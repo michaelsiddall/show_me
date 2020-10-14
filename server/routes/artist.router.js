@@ -3,13 +3,10 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("axios");
 const qs = require("qs");
+require("dotenv").config();
 
 //  * GET route template
-//  *
-//  *
-//  *
-//  *
-//  */
+
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
 let client_secret = process.env.client_secret; // Your secret
 
@@ -18,6 +15,7 @@ router.get("/", (req, res) => {
   console.log("/search GET route");
   console.log("is authenticated?", req.isAuthenticated());
   console.log("user", req.user);
+
   axios({
     method: "post",
     url: "https://accounts.spotify.com/api/token",
@@ -58,9 +56,9 @@ router.get("/", (req, res) => {
           // res.send({ spotifyObject });
           res.send({
             name: spotifyObject.artists.items[0].name,
-            genre: spotifyObject.artists.items[0].genre,
+            genre: spotifyObject.artists.items[0].genres[0],
             spotifyId: spotifyObject.artists.items[0].id,
-            image: spotifyObject.artists.items[0].images,
+            image: spotifyObject.artists.items[0].images[0].url,
           });
         })
         .catch(function (error) {

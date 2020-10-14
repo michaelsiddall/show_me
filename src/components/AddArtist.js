@@ -1,31 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-import axios from "axios";
 
 class AddArtist extends Component {
   state = {
     search: "",
   };
-
-  //   searchArtist = () => {
-  //     //GET items from server via AXIOS
-  //     axios({
-  //       method: "GET",
-  //       url: "/search",
-  //     })
-  //       .then((response) => {
-  //         console.log("response", response);
-  //         console.log("response.query.query", response.query.query);
-
-  //         this.setState({
-  //           search: response.query.query,
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   };
 
   searchArtist = () => {
     console.log("Current State:", this.state);
@@ -44,6 +24,8 @@ class AddArtist extends Component {
   };
 
   render() {
+    console.log("this.props.store.artist is", this.props.store.artist);
+
     return (
       // Can also just use <> </> instead of divs
       <div>
@@ -55,6 +37,17 @@ class AddArtist extends Component {
         ></input>
         {"   "}
         <button onClick={this.searchArtist}>Search Artist on Spotify</button>
+
+        <h1>Artist: {this.props.store.artist.name}</h1>
+        <h1>Genre: {this.props.store.artist.genre}</h1>
+        <img
+          height="400px"
+          width="400px"
+          alt=" "
+          src={this.props.store.artist.image}
+        ></img>
+
+        <h1>Spotify Id: {this.props.store.artist.spotifyId}</h1>
       </div>
     );
   }
