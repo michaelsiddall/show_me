@@ -1,9 +1,10 @@
-const artistReducer = (state = [], action) => {
+const artistsReducer = (state = [], action) => {
   console.log("in artistReducer");
+  console.log("payload is", action.payload);
 
   switch (action.type) {
     case "SET_ARTIST":
-      return action.payload;
+      return action.payload.artists;
     default:
       return state;
   }
@@ -11,4 +12,4 @@ const artistReducer = (state = [], action) => {
 
 // user will be on the redux state at:
 // state.artist
-export default artistReducer;
+export default artistsReducer;

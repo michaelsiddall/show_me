@@ -2,7 +2,7 @@ import { all } from "redux-saga/effects";
 import loginSaga from "./login.saga";
 import registrationSaga from "./registration.saga";
 import userSaga from "./user.saga";
-import artistSaga from "./artist.saga";
+import artistsSaga from "./artists.saga";
 import venueSaga from "./venue.saga";
 
 // rootSaga is the primary saga.
@@ -17,7 +17,7 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    artistSaga(),
+    artistsSaga(),
     venueSaga(),
   ]);
 }

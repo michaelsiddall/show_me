@@ -3,7 +3,6 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* searchArtist(action) {
   console.log("in searchArtist Saga");
-  console.log(JSON.stringify(action));
 
   // get request to server to search artist on Spotify
   let response = yield axios({
@@ -11,6 +10,7 @@ function* searchArtist(action) {
     url: "/search",
     params: { q: action.payload.search },
   });
+
   // http://localhost:5000/search?q=deerhunter
 
   //Sending to reducer we will create
@@ -19,8 +19,8 @@ function* searchArtist(action) {
     payload: response.data,
   });
 }
-function* artistSaga() {
+function* artistsSaga() {
   yield takeLatest("SEARCH_ARTIST", searchArtist);
 }
 
-export default artistSaga;
+export default artistsSaga;

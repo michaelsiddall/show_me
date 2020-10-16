@@ -42,24 +42,21 @@ router.get("/", (req, res) => {
           params: {
             q: req.query.q,
             type: "artist",
+            limit: "5",
           },
         })
         .then(function (searchResponse) {
-          // let exampleObject = {
-          //   name: "Deerhunter",
-          //   image:
-          //     "https://i.scdn.co/image/ef8563081fa5394c1ec53f8e2a87a67fdec7a70d",
-          //   genre: "alternative dance",
-          //   spotifyId: "38zTZcuN7nFvVJ6auhc6V3",
-          // };
-          let spotifyObject = searchResponse.data;
-          // res.send({ spotifyObject });
-          res.send({
-            name: spotifyObject.artists.items[0].name,
-            genre: spotifyObject.artists.items[0].genres[0],
-            spotifyId: spotifyObject.artists.items[0].id,
-            image: spotifyObject.artists.items[0].images[0].url,
+          let spotifyArtists = searchResponse.data.artists.items;
+          let myArtists = spotifyArtists.map((artist) => {
+            return {
+              name: artist.name,
+              genre: artist.genres[0],
+              image: artist.images[0].url,
+              spotifyId: artist.id,
+            };
           });
+          res.json({ artists: myArtists });
+          // res.json(searchResponse.data);
         })
         .catch(function (error) {
           console.log("error is", error);
