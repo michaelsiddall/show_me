@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -37,6 +37,14 @@ class AddArtist extends Component {
     });
   };
 
+  addArtist = (artist) => {
+    console.log("this is the payload", artist);
+    this.props.dispatch({
+      type: "ADD_ARTIST",
+      payload: artist,
+    });
+  };
+
   render() {
     return (
       // Can also just use <> </> instead of divs
@@ -51,10 +59,15 @@ class AddArtist extends Component {
         <button onClick={this.searchArtist}>Search </button>
 
         <List>
+          <h1>Click on an Artist to Add</h1>
           {this.props.store.artists.map((artist) => {
             const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
             return (
-              <ListItem key={labelId} button>
+              <ListItem
+                key={labelId}
+                button
+                onClick={() => this.addArtist(artist)}
+              >
                 <ListItemAvatar>
                   <Avatar alt="band" src={artist.image} />
                 </ListItemAvatar>

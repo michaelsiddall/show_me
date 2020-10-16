@@ -4,13 +4,16 @@ const router = express.Router();
 const axios = require("axios");
 const qs = require("qs");
 require("dotenv").config();
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
 
 //  * GET route template
 
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
 let client_secret = process.env.client_secret; // Your secret
 
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("/search GET route");
   console.log("is authenticated?", req.isAuthenticated());
@@ -70,8 +73,32 @@ router.get("/", (req, res) => {
 /**
  * POST route template
  */
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
-});
+  console.log("/artist POST route");
+  console.log(req.body);
+  console.log("is authenticated?", req.isAuthenticated());
+  console.log("user", req.user);
 
+  if (!req.isAuthenticated()) {
+    res.sendStatus(403);
+    return;
+  }
+  const queryString = `INSERT INTO "artist" ("name", "genre", "image", "spotifyId" )
+  VALUES ($1, $2, $3, $4)`;
+  pool
+    .query(queryString, [
+      req.body.name,
+      req.body.genre,
+      req.body.image,
+      req.body.spotifyId,
+    ])
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(`POST /Add Artist failed`, err);
+      res.sendStatus(500);
+    });
+});
 module.exports = router;
