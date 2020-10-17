@@ -12,7 +12,7 @@ const {
  */
 router.get("/", rejectUnauthenticated, (req, res) => {
   let queryText;
-  queryText = `SELECT * FROM "venues"`;
+  queryText = `SELECT * FROM "artist"`;
   // queryParams = [req.user.id];
 
   pool
@@ -23,7 +23,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
       console.log("results from db", result.rows);
     })
     .catch((error) => {
-      console.log("error getting venues", error);
+      console.log("error getting artists", error);
       res.sendStatus(500);
     });
 });

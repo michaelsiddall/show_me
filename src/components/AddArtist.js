@@ -1,10 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
+// import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: "100%",
+//     maxWidth: 360,
+//     backgroundColor: theme.palette.background.paper,
+//   },
+// }));
 
 class AddArtist extends Component {
   state = {
     search: "",
+  };
+  componentDidMount = () => {
+    console.log("in componentDidMount");
+
+    this.getArtist();
   };
 
   searchArtist = () => {
@@ -15,7 +34,7 @@ class AddArtist extends Component {
     });
   };
 
-  onChangeHandler = (event, propertyName) => {
+  onChange = (event, propertyName) => {
     console.log("we are changing", propertyName);
     this.setState({
       ...this.state,
@@ -23,31 +42,73 @@ class AddArtist extends Component {
     });
   };
 
-  render() {
-    console.log("this.props.store.artist is", this.props.store.artist);
+  addArtist = (artist) => {
+    console.log("this is the payload", artist);
+    this.props.dispatch({
+      type: "ADD_ARTIST",
+      payload: artist,
+    });
+    this.getArtist();
+  };
 
+  getArtist = () => {
+    this.props.dispatch({
+      type: "FETCH_ARTIST",
+    });
+  };
+
+  render() {
     return (
       // Can also just use <> </> instead of divs
+
       <div>
+        <List>
+          <h1>My Saved Artists</h1>
+          {this.props.store.getArtists.map((artist) => {
+            const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
+            return (
+              <ListItem
+                key={labelId}
+                button
+                // onClick={() => this.addArtist(artist)}
+              >
+                <ListItemAvatar>
+                  <Avatar alt="band" src={artist.image} />
+                </ListItemAvatar>
+                <ListItemText id={artist.spotifyId} primary={artist.name} />
+                <ListItemText primary={artist.genre} />
+              </ListItem>
+            );
+          })}
+        </List>
+        <h1>Artist Search</h1>
         <input
           placeholder="Search Artist on Spotify"
           type="text"
           value={this.state.search}
-          onChange={(event) => this.onChangeHandler(event, "search")}
+          onChange={(event) => this.onChange(event, "search")}
         ></input>
-        {"   "}
-        <button onClick={this.searchArtist}>Search Artist on Spotify</button>
+        <button onClick={this.searchArtist}>Search </button>
 
-        <h1>Artist: {this.props.store.artist.name}</h1>
-        <h1>Genre: {this.props.store.artist.genre}</h1>
-        <img
-          height="400px"
-          width="400px"
-          alt=" "
-          src={this.props.store.artist.image}
-        ></img>
-
-        <h1>Spotify Id: {this.props.store.artist.spotifyId}</h1>
+        <List>
+          <h3>Click on an Artist to Add</h3>
+          {this.props.store.artists.map((artist) => {
+            const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
+            return (
+              <ListItem
+                key={labelId}
+                button
+                onClick={() => this.addArtist(artist)}
+              >
+                <ListItemAvatar>
+                  <Avatar alt="band" src={artist.image} />
+                </ListItemAvatar>
+                <ListItemText id={artist.spotifyId} primary={artist.name} />
+                <ListItemText primary={artist.genre} />
+              </ListItem>
+            );
+          })}
+        </List>
       </div>
     );
   }
