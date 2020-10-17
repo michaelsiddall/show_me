@@ -19,8 +19,8 @@ function* searchVenue(action) {
     payload: response.data,
   });
 }
-function* venueSaga() {
+function* venuesSaga() {
   yield takeLatest("SEARCH_VENUE", searchVenue);
 }
 
-export default venueSaga;
+export default venuesSaga;

@@ -4,11 +4,14 @@ const router = express.Router();
 const qs = require("qs");
 const axios = require("axios");
 require("dotenv").config();
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
 
 /**
  * GET route template
  */
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   console.log("/venue GET route");
   console.log("is authenticated?", req.isAuthenticated());
   console.log("user", req.user);
@@ -25,7 +28,6 @@ router.get("/", (req, res) => {
   })
     .then((searchVenueResponse) => {
       console.log("got back data", searchVenueResponse.data);
-
       let songKickObject = searchVenueResponse.data.resultsPage.results.venue;
 
       let myVenues = songKickObject.map((venue) => {
@@ -33,7 +35,7 @@ router.get("/", (req, res) => {
           name: venue.displayName,
           address: venue.street,
           city: venue.city.displayName,
-          state: venue.city.state.displayName,
+          // state: venue.city.state.displayName,
           songKickId: venue.id,
         };
       });

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 class AddVenue extends Component {
   state = {
@@ -24,10 +29,11 @@ class AddVenue extends Component {
   };
 
   render() {
-    // console.log("this.props.store.artist is", this.props.store.artist);
+    console.log("this.props.store.venues is", this.props.store.venues);
 
     return (
       // Can also just use <> </> instead of divs
+
       <div>
         <input
           placeholder="Search Venue on SongKick"
@@ -38,11 +44,33 @@ class AddVenue extends Component {
         {"   "}
         <button onClick={this.searchVenue}>Search Venue</button>
 
-        <h1>Venue: {this.props.store.venue.name}</h1>
+        {/* <h1>Venue: {this.props.store.venue.name}</h1>
         <h1>City: {this.props.store.venue.city}</h1>
         <h1>State: {this.props.store.venue.state}</h1>
 
-        <h1>Song Kick ID: {this.props.store.venue.songKickId}</h1>
+        <h1>Song Kick ID: {this.props.store.venue.songKickId}</h1> */}
+
+        <List>
+          <h3>Click on a Venue to Add</h3>
+          {this.props.store.venues.map((venue) => {
+            const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
+            return (
+              <ListItem
+                key={labelId}
+                button
+                // onClick={() => this.addArtist(artist)}
+              >
+                {/* <ListItemAvatar>
+                  <Avatar alt="band" src={artist.image} />
+                </ListItemAvatar> */}
+                <ListItemText id={venue.songKickId} primary={venue.name} />
+                <ListItemText primary={venue.address} />
+                <ListItemText primary={venue.city} />
+                <ListItemText primary={venue.songKickId} />
+              </ListItem>
+            );
+          })}
+        </List>
       </div>
     );
   }
