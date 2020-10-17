@@ -19,18 +19,25 @@ router.get("/", (req, res) => {
     params: {
       query: req.query.query,
       apikey: process.env.SONGKICK_APIKEY,
+      page: "1",
+      per_page: "5",
     },
   })
     .then((searchVenueResponse) => {
       console.log("got back data", searchVenueResponse.data);
-      let songKickObject = searchVenueResponse.data;
-      res.send({
-        name: songKickObject.resultsPage.results.venue[0].displayName,
-        city: songKickObject.resultsPage.results.venue[0].city.displayName,
-        state:
-          songKickObject.resultsPage.results.venue[0].city.state.displayName,
-        songKickId: songKickObject.resultsPage.results.venue[0].id,
+
+      let songKickObject = searchVenueResponse.data.resultsPage.results.venue;
+
+      let myVenues = songKickObject.map((venue) => {
+        return {
+          name: venue.displayName,
+          address: venue.street,
+          city: venue.city.displayName,
+          state: venue.city.state.displayName,
+          songKickId: venue.id,
+        };
       });
+      res.json({ venues: myVenues });
     })
     .catch((err) => {
       console.error(err);
