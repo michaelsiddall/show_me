@@ -27,20 +27,17 @@ function* searchArtist(action) {
 
 function* fetchArtist(action) {
   console.log("in fetchArtist Saga");
-
-  // get request to server to search artist on Spotify
   let response = yield axios({
     method: "GET",
-    url: "/search",
+    url: "/artist",
   });
   console.log("back from fetch GET", response.data);
-
   yield put({
-    type: "SET_ARTIST",
+    type: "GET_ARTIST",
 
     payload: response.data,
   });
-  console.log("these are the artists", response.data.results);
+  console.log("these are the artists", response.data);
 }
 
 function* artistsSaga() {

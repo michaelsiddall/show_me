@@ -21,6 +21,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import AddArtist from "../AddArtist";
 import AddVenue from "../AddVenue";
+import MyArtists from "../MyArtists";
 
 import "./App.css";
 
@@ -110,6 +111,15 @@ class App extends Component {
               exact
               path="/addVenue"
               component={AddVenue}
+              // authRedirect="/addArtist"
+            />
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/myArtists"
+              component={MyArtists}
               // authRedirect="/addArtist"
             />
 
