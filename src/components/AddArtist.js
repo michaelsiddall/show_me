@@ -20,6 +20,11 @@ class AddArtist extends Component {
   state = {
     search: "",
   };
+  componentDidMount = () => {
+    console.log("in componentDidMount");
+
+    this.getArtist();
+  };
 
   searchArtist = () => {
     console.log("Current State:", this.state);
@@ -45,11 +50,25 @@ class AddArtist extends Component {
     });
   };
 
+  getArtist = () => {
+    this.props.dispatch({
+      type: "FETCH_ARTIST",
+    });
+  };
+
   render() {
     return (
       // Can also just use <> </> instead of divs
 
       <div>
+        {/* {this.props.store.artists.map((artist) => {
+ return {
+  name: artist.name,
+  genre: artist.genre,
+  image: artist.image,
+  spotifyId: artist.id,
+}; */}
+
         <input
           placeholder="Search Artist on Spotify"
           type="text"
