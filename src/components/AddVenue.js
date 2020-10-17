@@ -4,15 +4,13 @@ import mapStoreToProps from "./../redux/mapStoreToProps";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 class AddVenue extends Component {
   state = {
     search: "",
   };
 
-  searchVenue = () => {
+  searchVenues = () => {
     console.log("Current State:", this.state);
     this.props.dispatch({
       type: "SEARCH_VENUE",
@@ -21,10 +19,24 @@ class AddVenue extends Component {
   };
 
   onChangeHandler = (event, propertyName) => {
-    console.log("we are changing", propertyName);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
+    });
+  };
+
+  addVenues = (venue) => {
+    console.log("this is the venues payload", venue);
+    this.props.dispatch({
+      type: "ADD_VENUE",
+      payload: venue,
+    });
+    // this.getArtist();
+  };
+
+  getVenues = () => {
+    this.props.dispatch({
+      type: "FETCH_VENUE",
     });
   };
 
@@ -42,7 +54,7 @@ class AddVenue extends Component {
           onChange={(event) => this.onChangeHandler(event, "search")}
         ></input>
         {"   "}
-        <button onClick={this.searchVenue}>Search Venue</button>
+        <button onClick={this.searchVenues}>Search Venue</button>
 
         {/* <h1>Venue: {this.props.store.venue.name}</h1>
         <h1>City: {this.props.store.venue.city}</h1>
@@ -58,7 +70,7 @@ class AddVenue extends Component {
               <ListItem
                 key={labelId}
                 button
-                // onClick={() => this.addArtist(artist)}
+                onClick={() => this.addVenues(venue)}
               >
                 {/* <ListItemAvatar>
                   <Avatar alt="band" src={artist.image} />

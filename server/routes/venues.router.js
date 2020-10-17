@@ -12,7 +12,7 @@ const {
  * GET route template
  */
 router.get("/", rejectUnauthenticated, (req, res) => {
-  console.log("/venue GET route");
+  console.log("/venues GET route");
   console.log("is authenticated?", req.isAuthenticated());
   console.log("user", req.user);
   console.log("req.query.query is", req.query.query);
@@ -54,8 +54,34 @@ router.get("/", (req, res) => {
 /**
  * POST route template
  */
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
+  console.log("/venues POST route");
+  console.log(req.body);
+  console.log("is authenticated?", req.isAuthenticated());
+  console.log("user", req.user);
+
+  if (!req.isAuthenticated()) {
+    res.sendStatus(403);
+    return;
+  }
+  const queryString = `INSERT INTO "venues" ("user_id", "name", "address", "city", "songKickId" )
+  VALUES ($1, $2, $3, $4, $5)`;
+  pool
+    .query(queryString, [
+      req.user.id,
+      req.body.name,
+      req.body.address,
+      req.body.city,
+      req.body.songKickId,
+    ])
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(`POST /Add Artist failed`, err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
