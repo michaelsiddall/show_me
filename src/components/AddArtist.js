@@ -48,6 +48,7 @@ class AddArtist extends Component {
       type: "ADD_ARTIST",
       payload: artist,
     });
+    this.getArtist();
   };
 
   getArtist = () => {
@@ -61,14 +62,26 @@ class AddArtist extends Component {
       // Can also just use <> </> instead of divs
 
       <div>
-        {/* {this.props.store.artists.map((artist) => {
- return {
-  name: artist.name,
-  genre: artist.genre,
-  image: artist.image,
-  spotifyId: artist.id,
-}; */}
-
+        <List>
+          <h1>My Saved Artists</h1>
+          {this.props.store.getArtists.map((artist) => {
+            const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
+            return (
+              <ListItem
+                key={labelId}
+                button
+                // onClick={() => this.addArtist(artist)}
+              >
+                <ListItemAvatar>
+                  <Avatar alt="band" src={artist.image} />
+                </ListItemAvatar>
+                <ListItemText id={artist.spotifyId} primary={artist.name} />
+                <ListItemText primary={artist.genre} />
+              </ListItem>
+            );
+          })}
+        </List>
+        <h1>Artist Search</h1>
         <input
           placeholder="Search Artist on Spotify"
           type="text"
@@ -78,7 +91,7 @@ class AddArtist extends Component {
         <button onClick={this.searchArtist}>Search </button>
 
         <List>
-          <h1>Click on an Artist to Add</h1>
+          <h3>Click on an Artist to Add</h3>
           {this.props.store.artists.map((artist) => {
             const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
             return (

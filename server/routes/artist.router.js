@@ -70,23 +70,6 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/", rejectUnauthenticated, (req, res) => {
-  let queryText;
-  queryText = `SELECT * FROM "artist"`;
-  // queryParams = [req.user.id];
-
-  pool
-    .query(queryText)
-    .then((result) => {
-      // Sends back the results in an object
-      res.send(result.rows);
-    })
-    .catch((error) => {
-      console.log("error getting artists", error);
-      res.sendStatus(500);
-    });
-});
-
 /**
  * POST route template
  */
