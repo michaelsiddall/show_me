@@ -28,9 +28,24 @@ function* searchVenues(action) {
     payload: response.data,
   });
 }
+
+function* fetchVenues(action) {
+  console.log("in fetchArtist Saga");
+  let response = yield axios({
+    method: "GET",
+    url: "/venuesList",
+  });
+  console.log("back from fetch GET venues list", response.data);
+  yield put({
+    type: "GET_VENUES",
+    payload: response.data,
+  });
+}
+
 function* venuesSaga() {
   yield takeLatest("SEARCH_VENUE", searchVenues);
   yield takeLatest("ADD_VENUE", addVenues);
+  yield takeLatest("FETCH_VENUES", fetchVenues);
 }
 
 export default venuesSaga;

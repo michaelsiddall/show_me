@@ -10,6 +10,12 @@ class AddVenue extends Component {
     search: "",
   };
 
+  componentDidMount = () => {
+    console.log("in componentDidMount");
+
+    this.getVenues();
+  };
+
   searchVenues = () => {
     console.log("Current State:", this.state);
     this.props.dispatch({
@@ -31,22 +37,35 @@ class AddVenue extends Component {
       type: "ADD_VENUE",
       payload: venue,
     });
-    // this.getArtist();
+    this.getVenues();
   };
 
   getVenues = () => {
     this.props.dispatch({
-      type: "FETCH_VENUE",
+      type: "FETCH_VENUES",
     });
   };
 
   render() {
-    console.log("this.props.store.venues is", this.props.store.venues);
-
     return (
       // Can also just use <> </> instead of divs
 
       <div>
+        <List>
+          <h1>My Saved Venues</h1>
+          {this.props.store.getVenues.map((venue) => {
+            const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
+            return (
+              <ListItem key={labelId} button>
+                <ListItemText id={venue.songKickId} primary={venue.name} />
+                <ListItemText primary={venue.address} />
+                <ListItemText primary={venue.city} />
+                <ListItemText primary={venue.songKickId} />
+              </ListItem>
+            );
+          })}
+        </List>
+        <h1>Search Venues</h1>
         <input
           placeholder="Search Venue on SongKick"
           type="text"
@@ -63,7 +82,7 @@ class AddVenue extends Component {
         <h1>Song Kick ID: {this.props.store.venue.songKickId}</h1> */}
 
         <List>
-          <h3>Click on a Venue to Add</h3>
+          <h3>Click on a Venue to Add to "My Saved Venues"</h3>
           {this.props.store.venues.map((venue) => {
             const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
             return (

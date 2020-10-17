@@ -4,6 +4,7 @@ import user from "./user.reducer";
 import artists from "./artists.reducer";
 import venues from "./venues.reducer";
 import getArtists from "./getArtists.reducer";
+import getVenues from "./getVenues.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   artists,
   venues,
   getArtists,
+  getVenues,
 });
 
 export default rootReducer;
