@@ -37,7 +37,6 @@ function* fetchArtist(action) {
 
     payload: response.data,
   });
-  console.log("these are the artists", response.data);
 }
 
 function* artistsSaga() {
