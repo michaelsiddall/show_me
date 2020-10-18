@@ -43,14 +43,14 @@ class AddArtist extends Component {
     });
   };
 
-  addArtist = (artist) => {
-    console.log("this is the payload", artist);
-    console.log("this.props.store.artists", this.props.store.artists);
+  addArtist = (spotifyId, name) => {
+    console.log("this is the spotifyId of selected artist", spotifyId, name);
+    console.log("this.props.store.spotifyId", "this.props.store.spotifyId");
 
-    alert(`You selected ${artist.name}`);
+    alert(`You selected ${(spotifyId, name)}`);
     this.props.dispatch({
-      type: "ADD_ARTIST",
-      payload: artist,
+      type: "SET_SPOTIFY_ID",
+      payload: spotifyId,
     });
     // this.getArtist();
   };
@@ -112,7 +112,7 @@ class AddArtist extends Component {
               <ListItem
                 key={labelId}
                 button
-                onClick={() => this.addArtist(artist)}
+                onClick={() => this.addArtist(artist.spotifyId, artist.name)}
               >
                 <ListItemAvatar>
                   <Avatar alt="band" src={artist.image} />

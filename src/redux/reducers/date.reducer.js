@@ -1,5 +1,5 @@
-const dateReducer = (state = {}, action) => {
-  // console.log("dateReducer payload is", action.payload);
+const dateReducer = (state = "", action) => {
+  console.log("dateReducer payload is", action.payload);
 
   switch (action.type) {
     case "SET_DATE":

@@ -4,10 +4,6 @@ import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 
 class AddDate extends Component {
-  state = {
-    date: "",
-  };
-
   onChange = (event) => {
     console.log("payload is", event.target.value);
     console.log("this.props.store.date is", this.props.store.date);
@@ -41,7 +37,7 @@ class AddDate extends Component {
   render() {
     return (
       <div>
-        <h1>Date of the show: {this.state.value} </h1>
+        <h1>Date of the show: {this.props.store.date} </h1>
         <form>
           <input
             placeholder="Date of Show"

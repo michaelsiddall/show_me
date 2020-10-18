@@ -129,7 +129,7 @@ class App extends Component {
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
-              path="/saveConcert"
+              path="/addShow"
               component={AddShow}
               // authRedirect="/addArtist"
             />

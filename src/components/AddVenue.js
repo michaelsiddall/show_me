@@ -47,7 +47,7 @@ class AddVenue extends Component {
     if (this.props.store.venues === "") {
       alert("Please select an VENUE");
     } else {
-      this.props.history.push("/saveConcert");
+      this.props.history.push("/addShow");
     }
   };
 

@@ -12,12 +12,14 @@ class AddShow extends Component {
   };
 
   render() {
-    console.log("this.props.store:", this.props.store.artists);
+    console.log("this.props.store.artists:", this.props.store.artists);
+    console.log("this.props.store.date:", this.props.store.date);
+    console.log("this.props.store.venues:", this.props.store.venues.name);
     return (
       <div>
         <h1>Review Your Feedback</h1>
-        <br />
-        <h2>Artist: {this.props.store.artists}</h2>
+
+        <h2>Date: {this.props.store.date}</h2>
       </div>
     );
   }
