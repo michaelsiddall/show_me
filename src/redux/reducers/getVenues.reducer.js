@@ -1,5 +1,5 @@
 const getVenuesReducer = (state = [], action) => {
-  console.log("getArtistReducer payload is", action.payload);
+  // console.log("getVenuesReducer payload is", action.payload);
 
   switch (action.type) {
     case "GET_VENUES":

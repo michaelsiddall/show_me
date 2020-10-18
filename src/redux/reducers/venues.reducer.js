@@ -1,5 +1,5 @@
 const venuesReducer = (state = [], action) => {
-  console.log("in venuesReducer");
+  console.log("in venuesReducer", action.payload);
 
   switch (action.type) {
     case "SET_VENUE":

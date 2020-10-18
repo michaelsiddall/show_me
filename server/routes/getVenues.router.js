@@ -11,9 +11,9 @@ const {
  * GET route template
  */
 router.get("/", rejectUnauthenticated, (req, res) => {
-  let queryText;
+  let queryText, queryParams;
   queryText = `SELECT * FROM "venues"`;
-  // queryParams = [req.user.id];
+  queryParams = [req.user.id];
 
   pool
     .query(queryText)

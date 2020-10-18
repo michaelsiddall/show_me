@@ -26,7 +26,7 @@ function* searchArtist(action) {
 }
 
 function* fetchArtist(action) {
-  console.log("in fetchArtist Saga");
+  // console.log("in fetchArtist Saga");
   let response = yield axios({
     method: "GET",
     url: "/artist",

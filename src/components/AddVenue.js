@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,11 +11,11 @@ class AddVenue extends Component {
     search: "",
   };
 
-  componentDidMount = () => {
-    console.log("in componentDidMount");
+  // componentDidMount = () => {
+  //   console.log("in componentDidMount");
 
-    this.getVenues();
-  };
+  //   this.getVenues();
+  // };
 
   searchVenues = () => {
     console.log("Current State:", this.state);
@@ -33,25 +34,37 @@ class AddVenue extends Component {
 
   addVenues = (venue) => {
     console.log("this is the venues payload", venue);
+    alert(`You selected ${venue.name}`);
     this.props.dispatch({
       type: "ADD_VENUE",
       payload: venue,
     });
-    this.getVenues();
+    // this.getVenues();
   };
 
-  getVenues = () => {
-    this.props.dispatch({
-      type: "FETCH_VENUES",
-    });
+  onNext = () => {
+    console.log("this.props.history", this.props.history);
+    if (this.props.store.venues === "") {
+      alert("Please select an VENUE");
+    } else {
+      this.props.history.push("/saveConcert");
+    }
   };
+
+  // th
+
+  // getVenues = () => {
+  //   this.props.dispatch({
+  //     type: "FETCH_VENUES",
+  //   });
+  // };
 
   render() {
     return (
       // Can also just use <> </> instead of divs
 
       <div>
-        <List>
+        {/* <List>
           <h1>My Saved Venues</h1>
           {this.props.store.getVenues.map((venue) => {
             const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
@@ -64,7 +77,7 @@ class AddVenue extends Component {
               </ListItem>
             );
           })}
-        </List>
+        </List> */}
         <h1>Search Venues</h1>
         <input
           placeholder="Search Venue on SongKick"
@@ -82,7 +95,7 @@ class AddVenue extends Component {
         <h1>Song Kick ID: {this.props.store.venue.songKickId}</h1> */}
 
         <List>
-          <h3>Click on a Venue to Add to "My Saved Venues"</h3>
+          <h3>Click on a Venue to Add"</h3>
           {this.props.store.venues.map((venue) => {
             const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
             return (
@@ -102,9 +115,10 @@ class AddVenue extends Component {
             );
           })}
         </List>
+        <button onClick={this.onNext}>Submit Venue and Proceed</button>
       </div>
     );
   }
 }
 
-export default connect(mapStoreToProps)(AddVenue);
+export default connect(mapStoreToProps)(withRouter(AddVenue));

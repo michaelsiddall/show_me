@@ -1,5 +1,5 @@
 const artistsReducer = (state = [], action) => {
-  console.log("artistReducer payload is", action.payload);
+  // console.log("artistReducer payload is", action.payload);
 
   switch (action.type) {
     case "SET_ARTIST":
