@@ -37,7 +37,8 @@ class AddDate extends Component {
   render() {
     return (
       <div>
-        <h1>Date of the show: {this.props.store.date} </h1>
+        <h1>Select date of the show attended</h1>
+        <h3>Date of the show: {this.props.store.date} </h3>
         <form>
           <input
             placeholder="Date of Show"

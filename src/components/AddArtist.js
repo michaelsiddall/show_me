@@ -94,7 +94,14 @@ class AddArtist extends Component {
             );
           })}
         </List> */}
-        <h1>Artist Search</h1>
+        <h1>Search via Spotify for your Artist</h1>
+        {/* <img
+          src="src/components/images/Spotify_Icon_CMYK_Green.png"
+          height="200px"
+          width="150px"
+        ></img> */}
+
+        <h3>Artist Search</h3>
         <input
           placeholder="Search Artist on Spotify"
           type="text"
@@ -103,7 +110,7 @@ class AddArtist extends Component {
         ></input>
         <button onClick={this.searchArtist}>Search </button>
         <List>
-          <h3>Click on an Artist to Add</h3>
+          <h3>Click on an Artist to Add and click Submit</h3>
           {this.props.store.artists.map((artist) => {
             const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
             return (
