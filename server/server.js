@@ -36,7 +36,7 @@ app.use("/artist", getArtistRouter);
 app.use("/venuesList", getVenuesRouter);
 app.use("/saveConcert", saveConcertRouter);
 app.use("/showList", showListRouter);
-app.use("/:id", spotifyIdRouter);
+app.use("/id", spotifyIdRouter);
 
 // Serve static files
 app.use(express.static("build"));

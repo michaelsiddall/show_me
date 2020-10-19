@@ -35,15 +35,12 @@ router.get("/", (req, res) => {
   })
     .then(function (response) {
       let accessToken = response.data.access_token;
-      console.log("req.query.q is", req.query.q);
+
       //   res.send(JSON.stringify(req.query));
       axios
         .get("	https://api.spotify.com/v1/artists/{id}", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
-          },
-          params: {
-            type: "artist",
           },
         })
         .then(function (searchResponse) {

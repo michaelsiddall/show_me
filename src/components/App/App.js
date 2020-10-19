@@ -105,7 +105,7 @@ class App extends Component {
               exact
               path="/addArtist"
               component={AddArtist}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -114,7 +114,7 @@ class App extends Component {
               exact
               path="/addVenue"
               component={AddVenue}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -123,7 +123,7 @@ class App extends Component {
               exact
               path="/myArtists"
               component={MyArtists}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -132,7 +132,7 @@ class App extends Component {
               exact
               path="/addShow"
               component={AddShow}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -141,7 +141,7 @@ class App extends Component {
               exact
               path="/addDate"
               component={AddDate}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -150,7 +150,7 @@ class App extends Component {
               exact
               path="/showList"
               component={ShowList}
-              // authRedirect="/addArtist"
+              // authRedirect="/user"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
