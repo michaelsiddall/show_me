@@ -38,7 +38,7 @@ router.get("/", (req, res) => {
 
       //   res.send(JSON.stringify(req.query));
       axios
-        .get("	https://api.spotify.com/v1/artists/{id}", {
+        .get("	https://api.spotify.com/v1/artists/", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -50,7 +50,7 @@ router.get("/", (req, res) => {
               name: artist.name,
               genre: artist.genres[0],
               image: artist.images[0].url,
-              spotifyId: artist.id,
+              // spotifyId: artist.id,
             };
           });
           res.json({ artists: myArtists });
@@ -70,30 +70,5 @@ router.get("/", (req, res) => {
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
-  console.log("/artist POST route");
-  console.log(req.body);
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-
-  if (!req.isAuthenticated()) {
-    res.sendStatus(403);
-    return;
-  }
-  const queryString = `INSERT INTO "artist" ("name", "genre", "image", "spotifyId" )
-  VALUES ($1, $2, $3, $4)`;
-  pool
-    .query(queryString, [
-      req.body.name,
-      req.body.genre,
-      req.body.image,
-      req.body.spotifyId,
-    ])
-    .then((results) => {
-      res.sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(`POST /Add Artist failed`, err);
-      res.sendStatus(500);
-    });
 });
 module.exports = router;

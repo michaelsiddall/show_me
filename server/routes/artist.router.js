@@ -62,11 +62,11 @@ router.get("/", (req, res) => {
           // res.json(searchResponse.data);
         })
         .catch(function (error) {
-          console.log("error is", error);
+          console.log("Spotify search failed", error);
         });
     })
     .catch(function (error) {
-      console.log("error is", error);
+      console.log("Spotify token failed", error);
     });
 });
 

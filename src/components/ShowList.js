@@ -41,7 +41,7 @@ class ShowList extends Component {
         <ul>
           {this.state.shows.map((show) => (
             <li key={show.id}>
-              {show.date} {show.spotifyId} {show.songKickId}
+              {show.date} {show.artist} {show.venue}
             </li>
           ))}
         </ul>
