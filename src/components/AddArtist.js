@@ -28,7 +28,6 @@ class AddArtist extends Component {
   // };
 
   searchArtist = () => {
-    console.log("Current State:", this.state);
     this.props.dispatch({
       type: "SEARCH_ARTIST",
       payload: this.state,
@@ -36,7 +35,6 @@ class AddArtist extends Component {
   };
 
   onChange = (event, propertyName) => {
-    console.log("we are changing", propertyName);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,

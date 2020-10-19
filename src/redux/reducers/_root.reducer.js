@@ -7,6 +7,7 @@ import getArtists from "./getArtists.reducer";
 import getVenues from "./getVenues.reducer";
 import date from "./date.reducer";
 import spotifyId from "./spotifyId.reducer";
+import songKickId from "./songKickId.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   getVenues,
   date,
   spotifyId,
+  songKickId,
 });
 
 export default rootReducer;
