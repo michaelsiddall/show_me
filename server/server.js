@@ -14,6 +14,7 @@ const searchVenuesRouter = require("./routes/venues.router");
 const getArtistRouter = require("./routes/getArtist.router");
 const getVenuesRouter = require("./routes/getVenues.router");
 const saveConcertRouter = require("./routes/saveConcert.router");
+const showListRouter = require("./routes/showList.router");
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use("/venues", searchVenuesRouter);
 app.use("/artist", getArtistRouter);
 app.use("/venuesList", getVenuesRouter);
 app.use("/saveConcert", saveConcertRouter);
+app.use("/showList", showListRouter);
 
 // Serve static files
 app.use(express.static("build"));

@@ -27,11 +27,11 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     res.sendStatus(403);
     return;
   }
-  // let queryString, queryParams;
+  let queryText, queryParams;
 
-  const queryText = `INSERT INTO "concert" ("date", "spotifyId", "songKickId", user_id)
+  queryText = `INSERT INTO "concert" ("date", "spotifyId", "songKickId", user_id)
   VALUES ($1, $2, $3, $4)`;
-  // queryParams = [req.user.id];
+  queryParams = [req.user.id];
 
   pool
     .query(queryText, [

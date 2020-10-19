@@ -18,7 +18,6 @@ class AddVenue extends Component {
   // };
 
   searchVenues = () => {
-    console.log("Current State:", this.state);
     this.props.dispatch({
       type: "SEARCH_VENUE",
       payload: this.state,
@@ -32,12 +31,12 @@ class AddVenue extends Component {
     });
   };
 
-  addVenues = (venue) => {
-    console.log("this is the venues payload", venue);
-    alert(`You selected ${venue.name}`);
+  addVenues = (songKickId, name) => {
+    console.log("this is the songKickId of selected venue", songKickId);
+    alert(`You selected ${(songKickId, name)}`);
     this.props.dispatch({
-      type: "ADD_VENUE",
-      payload: venue,
+      type: "SET_SONGKICK_ID",
+      payload: songKickId,
     });
     // this.getVenues();
   };
@@ -102,7 +101,7 @@ class AddVenue extends Component {
               <ListItem
                 key={labelId}
                 button
-                onClick={() => this.addVenues(venue)}
+                onClick={() => this.addVenues(venue.songKickId, venue.name)}
               >
                 {/* <ListItemAvatar>
                   <Avatar alt="band" src={artist.image} />

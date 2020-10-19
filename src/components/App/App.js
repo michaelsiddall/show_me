@@ -24,6 +24,7 @@ import AddVenue from "../AddVenue";
 import MyArtists from "../MyArtists";
 import AddShow from "../AddShow";
 import AddDate from "../AddDate";
+import ShowList from "../ShowList";
 
 import "./App.css";
 
@@ -140,6 +141,15 @@ class App extends Component {
               exact
               path="/addDate"
               component={AddDate}
+              // authRedirect="/addArtist"
+            />
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/showList"
+              component={ShowList}
               // authRedirect="/addArtist"
             />
 
