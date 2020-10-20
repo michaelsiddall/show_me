@@ -1,6 +1,4 @@
 const songKickIdReducer = (state = "", action) => {
-  console.log("songKickIdReducer payload is", action.payload);
-
   switch (action.type) {
     case "SET_SONGKICK_ID":
       return action.payload;

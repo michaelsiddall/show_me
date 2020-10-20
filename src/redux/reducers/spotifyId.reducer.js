@@ -1,5 +1,5 @@
 const spotifyIdReducer = (state = "", action) => {
-  console.log("spotifyIdReducer payload is", action.payload);
+  // console.log("spotifyIdReducer payload is", action.payload);
 
   switch (action.type) {
     case "SET_SPOTIFY_ID":

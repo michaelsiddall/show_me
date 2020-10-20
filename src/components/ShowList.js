@@ -32,17 +32,22 @@ class ShowList extends Component {
       });
   };
 
+  // deleteShow = () => {
+  //   console.log("this show to delete", this.state.show);
+  // };
+
   render() {
-    console.log(this.state.shows);
+    console.log("state is", this.state.shows);
+    console.log("shows.showId", this.shows.showId);
 
     return (
       <div>
         <h1>Show List</h1>
-        <ul>
-          {this.state.shows.map((show, i) => (
-            <li key={i}>{show}</li>
+        {/* <ul>
+          {this.state.shows.map((show) => (
+            <li key={show.showId}>{show}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }
