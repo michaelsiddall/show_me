@@ -1,5 +1,5 @@
 let body = {
-  date: "2020-10-29",
-  artist: "Deerhunter",
-  venue: "First Avenue",
+  name: "Deerhunter",
+  genre: ,
+  image: artist.images[0].url,
 };

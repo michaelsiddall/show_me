@@ -42,19 +42,33 @@ router.get("/", (req, res) => {
         let accessToken = response.data.access_token;
 
         //   res.send(JSON.stringify(req.query));
-        let id = result.rows[1].spotifyId;
+        // let id = result.rows[0].spotifyId;
+
+        let concerts = result.rows;
+
+        let id = concerts.map((concert) => concert.spotifyId);
+        // id.toString();
+
+        // console.log("concerts", concerts);
+
         console.log("id is", id);
+        // let artistsSpotifyId = ids.filter(function (id) {
+        //   return id.spotifyId;
+        // });
 
         axios
-          .get(`https://api.spotify.com/v1/artists/${id}`, {
+          .get(`https://api.spotify.com/v1/artists?ids=${id}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
           })
           .then(function (artistResponse) {
-            console.log("artist name is ", artistResponse.data.name);
-
-            // res.json({ artists: myArtists });
+            console.log("artist name is ", artistResponse.data.artists);
+            // console.log("artistResponse", artistResponse);
+            let artistsName = artistResponse.data.artists.map(
+              (artist) => artist.name
+            );
+            res.send(artistsName);
             // res.json(searchResponse.data);
           })
           .catch(function (error) {

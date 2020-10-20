@@ -39,10 +39,8 @@ class ShowList extends Component {
       <div>
         <h1>Show List</h1>
         <ul>
-          {this.state.shows.map((show) => (
-            <li key={show.id}>
-              {show.date} {show.artist} {show.venue}
-            </li>
+          {this.state.shows.map((show, i) => (
+            <li key={i}>{show}</li>
           ))}
         </ul>
       </div>
