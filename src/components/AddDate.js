@@ -22,9 +22,6 @@ class AddDate extends Component {
 
   submitDate = () => {
     console.log("this.props.store.date is", this.props.store.date);
-    console.log("clicked submitDate");
-
-    console.log("this.props.history", this.props.history);
     if (this.props.store.date === "") {
       alert("Please select a date");
     } else {

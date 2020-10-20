@@ -12,73 +12,76 @@ let client_secret = process.env.client_secret; // Your secret
 /**
  * GET route template
  */
-router.get("/", (req, res) => {
-  // GET route code here
-  console.log("user id is", req.user.id);
-
+router.get("/", async (req, res) => {
   let queryText, queryParams;
   queryText = `SELECT * FROM "concert" WHERE "user_id" = $1;`;
   queryParams = [req.user.id];
 
-  pool.query(queryText, queryParams).then((result) => {
-    // Sends back the results in an object
+  const results = await pool.query(queryText, queryParams);
 
-    console.log("spotify Id", result.rows[1]);
-    axios({
-      method: "post",
-      url: "https://accounts.spotify.com/api/token",
-      data: qs.stringify({
-        grant_type: "client_credentials",
-      }),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        Authorization: `Basic ${Buffer.from(
-          `${client_id}:${client_secret}`,
-          "utf8"
-        ).toString("base64")}`,
-      },
-    })
-      .then(function (response) {
-        let accessToken = response.data.access_token;
-
-        //   res.send(JSON.stringify(req.query));
-        // let id = result.rows[0].spotifyId;
-
-        let concerts = result.rows;
-
-        let id = concerts.map((concert) => concert.spotifyId);
-        // id.toString();
-
-        // console.log("concerts", concerts);
-
-        console.log("id is", id);
-        // let artistsSpotifyId = ids.filter(function (id) {
-        //   return id.spotifyId;
-        // });
-
-        axios
-          .get(`https://api.spotify.com/v1/artists?ids=${id}`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
-          .then(function (artistResponse) {
-            console.log("artist name is ", artistResponse.data.artists);
-            // console.log("artistResponse", artistResponse);
-            let artistsName = artistResponse.data.artists.map(
-              (artist) => artist.name
-            );
-            res.send(artistsName);
-            // res.json(searchResponse.data);
-          })
-          .catch(function (error) {
-            console.log("Spotify search failed", error);
-          });
-      })
-      .catch(function (error) {
-        console.log("Spotify token failed", error);
-      });
+  // This is an axios request to get an authorization token from spotify.
+  const authResponse = await axios({
+    method: "post",
+    url: "https://accounts.spotify.com/api/token",
+    data: qs.stringify({
+      grant_type: "client_credentials",
+    }),
+    headers: {
+      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      Authorization: `Basic ${Buffer.from(
+        `${client_id}:${client_secret}`,
+        "utf8"
+      ).toString("base64")}`,
+    },
   });
+
+  // Declare the accesstoken variable and get it from the auth response.
+  let accessToken = authResponse.data.access_token;
+
+  // Mapping database query to promises that when fulfilled, returns the results
+  const promises = results.rows.map(async (row) => {
+    const response = await axios({
+      method: "GET",
+      url: `https://api.spotify.com/v1/artists/${row.spotifyId}`,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return {
+      showId: row.id,
+      date: row.date,
+      artistName: response.data.name,
+      image: response.data.images[0].url,
+      genre: response.data.genres[0],
+      venueId: row.songKickId,
+    };
+  });
+
+  const artistResults = await Promise.all(promises);
+
+  const venuePromises = artistResults.map(async (showData) => {
+    const response = await axios({
+      method: "GET",
+      url: `https://api.songkick.com/api/3.0/venues/${showData.venueId}.json`,
+      params: {
+        apikey: process.env.SONGKICK_APIKEY,
+      },
+    });
+
+    return {
+      showId: showData.showId,
+      date: showData.date,
+      artistName: showData.artistName,
+      image: showData.image,
+      genre: showData.genre,
+      venueName: response.data.resultsPage.results.venue.displayName,
+    };
+  });
+  const venueResults = await Promise.all(venuePromises);
+  console.log("venueResults are", venueResults);
+
+  res.send(venueResults);
 });
 /**
  * POST route template
