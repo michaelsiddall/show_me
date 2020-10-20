@@ -38,16 +38,18 @@ class ShowList extends Component {
 
   render() {
     console.log("state is", this.state.shows);
-    console.log("shows.showId", this.shows.showId);
+    console.log("showId is", this.state.shows);
 
     return (
       <div>
         <h1>Show List</h1>
-        {/* <ul>
+        <ul>
           {this.state.shows.map((show) => (
-            <li key={show.showId}>{show}</li>
+            <li key={show.showId}>
+              {show.artistName} {show.venueName} {show.date}
+            </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     );
   }
