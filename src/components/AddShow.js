@@ -18,6 +18,8 @@ class AddShow extends Component {
     })
       .then((response) => {
         console.log("back from POST with:", response);
+        alert("Your Show Has Been Saved");
+        this.props.history.push("/showList");
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +32,7 @@ class AddShow extends Component {
     console.log("this.props.store.venues:", this.props.store.venues.name);
     return (
       <div>
-        <h1>Review Your Feedback</h1>
+        <h1>Your Show Details</h1>
 
         <h2>Date: {this.props.store.date}</h2>
         <button onClick={this.onSubmit}>Save Show</button>
