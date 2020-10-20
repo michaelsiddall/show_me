@@ -52,6 +52,8 @@ router.get("/", async (req, res) => {
       showId: row.id,
       date: row.date,
       artistName: response.data.name,
+      image: response.data.images[0].url,
+      genre: response.data.genres[0],
       venueId: row.songKickId,
     };
   });
@@ -71,6 +73,8 @@ router.get("/", async (req, res) => {
       showId: showData.showId,
       date: showData.date,
       artistName: showData.artistName,
+      image: showData.image,
+      genre: showData.genre,
       venueName: response.data.resultsPage.results.venue.displayName,
     };
   });
