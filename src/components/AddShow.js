@@ -28,15 +28,10 @@ class AddShow extends Component {
       });
   }; //end function
   render() {
-    console.log("this.props.store.artists:", this.props.store.artists);
-    console.log("this.props.store.date:", this.props.store.date);
-    console.log("this.props.store.venues:", this.props.store.venues.name);
-    console.log("this.props.store.review:", this.props.store.venues.review);
     return (
       <div>
         <h1>Your Show Details</h1>
 
-        <h2>Date: {this.props.store.date}</h2>
         <button onClick={this.onSubmit}>Save Show</button>
       </div>
     );

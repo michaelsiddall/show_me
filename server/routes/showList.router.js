@@ -95,6 +95,25 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
 });
 
+//PUT
+router.put("/:id", rejectUnauthenticated, (req, res) => {
+  console.log("/showsList PUT:", req.params.id);
+  //set up query string
+  const queryString = "UPDATE show SET favorite=true WHERE id=$1";
+  // ask pool to run query
+  pool
+    .query(queryString, [req.params.id])
+    .then((results) => {
+      //if succesful send 200
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      //if unnsuccessful send 500;
+      res.sendStatus(500);
+    });
+});
+
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
     .query('DELETE FROM "show" WHERE id=$1', [req.params.id])

@@ -12,6 +12,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 class ShowList extends Component {
   state = {
     shows: [],
+    isHidden: false,
   };
 
   componentDidMount = () => {
@@ -44,6 +45,16 @@ class ShowList extends Component {
     this.getShows();
   };
 
+  favoriteShow = (event) => {
+    console.log("favorited this id", event);
+
+    axios({
+      method: "PUT",
+      url: `/showList/${event}`,
+    });
+    // this.getShows();
+  };
+
   render() {
     return (
       <div>
@@ -64,6 +75,14 @@ class ShowList extends Component {
                 <ListItemText primary={show.venueName} />
                 <ListItemText primary={show.date} />
                 <ListItemText primary={show.review} />
+                <button
+                  onClick={() => {
+                    this.favoriteShow(show.showId);
+                  }}
+                >
+                  Favorite Show
+                </button>
+
                 <button onClick={() => this.deleteShow(show.showId)}>
                   Delete Show
                 </button>
