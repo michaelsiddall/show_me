@@ -14,7 +14,7 @@ class AddShow extends Component {
         date: this.props.store.date,
         spotifyId: this.props.store.spotifyId,
         songKickId: this.props.store.songKickId,
-        review: this.props.store.reviews,
+        review: this.props.store.review,
       },
     })
       .then((response) => {

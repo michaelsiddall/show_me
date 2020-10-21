@@ -63,6 +63,7 @@ class ShowList extends Component {
                 <ListItemText id={show.showId} primary={show.artistName} />
                 <ListItemText primary={show.venueName} />
                 <ListItemText primary={show.date} />
+                <ListItemText primary={show.review} />
                 <button onClick={() => this.deleteShow(show.showId)}>
                   Delete Show
                 </button>
