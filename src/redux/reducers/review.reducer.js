@@ -1,4 +1,4 @@
-const reviewsReducer = (state = "", action) => {
+const reviewReducer = (state = "", action) => {
   console.log("in reviewReducer", action.payload);
 
   switch (action.type) {
@@ -11,4 +11,4 @@ const reviewsReducer = (state = "", action) => {
 
 // user will be on the redux state at:
 // state.artist
-export default reviewsReducer;
+export default reviewReducer;

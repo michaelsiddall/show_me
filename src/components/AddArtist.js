@@ -21,11 +21,6 @@ class AddArtist extends Component {
   state = {
     search: "",
   };
-  // componentDidMount = () => {
-  //   console.log("in componentDidMount");
-
-  //   this.getArtist();
-  // };
 
   searchArtist = () => {
     this.props.dispatch({
@@ -43,8 +38,6 @@ class AddArtist extends Component {
 
   addArtist = (spotifyId, name) => {
     console.log("this is the spotifyId of selected artist", spotifyId, name);
-    console.log("this.props.store.spotifyId", "this.props.store.spotifyId");
-
     this.props.dispatch({
       type: "SET_SPOTIFY_ID",
       payload: spotifyId,
@@ -52,19 +45,9 @@ class AddArtist extends Component {
     this.props.history.push("/addVenue");
   };
 
-  // getArtist = () => {
-  //   this.props.dispatch({
-  //     type: "FETCH_ARTIST",
-  //   });
-  // };
-
   onNext = () => {
     console.log("this.props.history", this.props.history);
-    if (this.props.store.artists === "") {
-      alert("Please select an ARTIST");
-    } else {
-      this.props.history.push("/addVenue");
-    }
+    this.props.history.push("/addVenue");
   };
 
   render() {
