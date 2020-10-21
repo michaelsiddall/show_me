@@ -11,8 +11,6 @@ const passport = require("./strategies/user.strategy");
 const userRouter = require("./routes/user.router");
 const searchArtistRouter = require("./routes/artist.router");
 const searchVenuesRouter = require("./routes/venues.router");
-const getArtistRouter = require("./routes/getArtist.router");
-const getVenuesRouter = require("./routes/getVenues.router");
 const saveConcertRouter = require("./routes/saveConcert.router");
 const showListRouter = require("./routes/showList.router");
 
@@ -31,8 +29,6 @@ app.use(passport.session());
 app.use("/api/user", userRouter);
 app.use("/search", searchArtistRouter);
 app.use("/venues", searchVenuesRouter);
-app.use("/artist", getArtistRouter);
-app.use("/venuesList", getVenuesRouter);
 app.use("/saveConcert", saveConcertRouter);
 app.use("/showList", showListRouter);
 
