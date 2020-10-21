@@ -37,7 +37,19 @@ class ShowList extends Component {
   };
 
   deleteShow = (event) => {
-    console.log("showId", event);
+    axios({
+      method: "DELETE",
+      url: `/showList/${event}`,
+    })
+      .then(function (response) {
+        console.log("Your show was deleted!", response);
+
+        // TODO: // Refresh page (aka do another GET request)
+      })
+      .catch(function (err) {
+        console.log("Error in delete", err);
+        alert("ruh-roh");
+      });
   };
 
   render() {
