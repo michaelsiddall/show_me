@@ -14,7 +14,7 @@ let client_secret = process.env.client_secret; // Your secret
  */
 router.get("/", async (req, res) => {
   let queryText, queryParams;
-  queryText = `SELECT * FROM "concert" WHERE "user_id" = $1;`;
+  queryText = `SELECT * FROM "show" WHERE "user_id" = $1;`;
   queryParams = [req.user.id];
 
   const results = await pool.query(queryText, queryParams);
@@ -55,10 +55,12 @@ router.get("/", async (req, res) => {
       image: response.data.images[0].url,
       genre: response.data.genres[0],
       venueId: row.songKickId,
+      review: row.review,
     };
   });
 
   const artistResults = await Promise.all(promises);
+  console.log("artistResults are", artistResults);
 
   // Mapping artistResults to promises and making SongKick API call to add venue info
 
@@ -78,6 +80,7 @@ router.get("/", async (req, res) => {
       image: showData.image,
       genre: showData.genre,
       venueName: response.data.resultsPage.results.venue.displayName,
+      review: showData.review,
     };
   });
   const venueResults = await Promise.all(venuePromises);
@@ -94,7 +97,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
-    .query('DELETE FROM "concert" WHERE id=$1', [req.params.id])
+    .query('DELETE FROM "show" WHERE id=$1', [req.params.id])
     .then((result) => {
       res.sendStatus(200);
       console.log("The show as successfully deleted");

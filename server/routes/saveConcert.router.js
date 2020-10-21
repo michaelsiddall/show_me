@@ -32,6 +32,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   queryText = `INSERT INTO "show" ("date", "spotifyId", "songKickId", "review", user_id)
   VALUES ($1, $2, $3, $4, $5)`;
   queryParams = [req.user.id];
+  console.log("req.body", req.body);
 
   pool
     .query(queryText, [

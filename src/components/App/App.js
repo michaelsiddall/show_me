@@ -25,7 +25,7 @@ import MyArtists from "../MyArtists";
 import AddShow from "../AddShow";
 import AddDate from "../AddDate";
 import ShowList from "../ShowList";
-import Reviews from "../Reviews";
+import AddReview from "../AddReview";
 
 import "./App.css";
 
@@ -153,15 +153,15 @@ class App extends Component {
               component={ShowList}
               // authRedirect="/user"
             />
-            {/* <ProtectedRoute
+            <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
               path="/addReview"
-              component={Reviews}
+              component={AddReview}
               // authRedirect="/user"
-            /> */}
+            />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
