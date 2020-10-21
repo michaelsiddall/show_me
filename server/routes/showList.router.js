@@ -47,7 +47,7 @@ router.get("/", async (req, res) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
+    // return artistResults ( the query results and add information from Spotify API call)
     return {
       showId: row.id,
       date: row.date,
@@ -60,6 +60,8 @@ router.get("/", async (req, res) => {
 
   const artistResults = await Promise.all(promises);
 
+  // Mapping artistResults to promises and making SongKick API call to add venue info
+
   const venuePromises = artistResults.map(async (showData) => {
     const response = await axios({
       method: "GET",
@@ -68,7 +70,7 @@ router.get("/", async (req, res) => {
         apikey: process.env.SONGKICK_APIKEY,
       },
     });
-
+    /// Return all of artistResults updated with SongKick info and renamed venueResults
     return {
       showId: showData.showId,
       date: showData.date,

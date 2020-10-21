@@ -29,8 +29,8 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   }
   let queryText, queryParams;
 
-  queryText = `INSERT INTO "concert" ("date", "spotifyId", "songKickId", user_id)
-  VALUES ($1, $2, $3, $4)`;
+  queryText = `INSERT INTO "show" ("date", "spotifyId", "songKickId", "review", user_id)
+  VALUES ($1, $2, $3, $4, $5)`;
   queryParams = [req.user.id];
 
   pool
@@ -38,6 +38,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       req.body.date,
       req.body.spotifyId,
       req.body.songKickId,
+      req.body.review,
       req.user.id,
     ])
     .then((results) => {
