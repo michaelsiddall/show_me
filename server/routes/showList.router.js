@@ -90,4 +90,17 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
 });
 
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  pool
+    .query('DELETE FROM "concert" WHERE id=$1', [req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+      console.log("The show as successfully deleted");
+    })
+    .catch((error) => {
+      console.log("Show couldn't be deleted", error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

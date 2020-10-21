@@ -25,7 +25,6 @@ class ShowList extends Component {
       url: "/showList",
     })
       .then((response) => {
-        console.log("response", response);
         console.log("response.data", response.data);
 
         this.setState({
@@ -37,10 +36,15 @@ class ShowList extends Component {
       });
   };
 
-  render() {
-    console.log("state is", this.state.shows);
-    console.log("showId is", this.state.shows);
+  deleteShow = (event) => {
+    axios({
+      method: "DELETE",
+      url: `/showList/${event}`,
+    });
+    this.getShows();
+  };
 
+  render() {
     return (
       <div>
         <List>
@@ -59,6 +63,9 @@ class ShowList extends Component {
                 <ListItemText id={show.showId} primary={show.artistName} />
                 <ListItemText primary={show.venueName} />
                 <ListItemText primary={show.date} />
+                <button onClick={() => this.deleteShow(show.showId)}>
+                  Delete Show
+                </button>
               </ListItem>
             );
           })}

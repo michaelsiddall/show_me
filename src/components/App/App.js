@@ -153,7 +153,7 @@ class App extends Component {
               component={ShowList}
               // authRedirect="/user"
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
@@ -161,7 +161,7 @@ class App extends Component {
               path="/addReview"
               component={Reviews}
               // authRedirect="/user"
-            />
+            /> */}
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
