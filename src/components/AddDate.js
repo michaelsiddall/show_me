@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 
 class AddDate extends Component {
-  onChange = (event) => {
+  onChangeHandler = (event) => {
     console.log("payload is", event.target.value);
     console.log("this.props.store.date is", this.props.store.date);
     this.props.dispatch({
@@ -12,13 +12,6 @@ class AddDate extends Component {
       payload: event.target.value,
     });
   };
-  // onChangeHandler = (event) => {
-  //   console.log("event.target.value is", event.target.value);
-
-  //   this.setState({
-  //     value: event.target.value,
-  //   });
-  // };
 
   submitDate = () => {
     console.log("this.props.store.date is", this.props.store.date);
@@ -28,8 +21,6 @@ class AddDate extends Component {
       this.props.history.push("/addArtist");
     }
   };
-
-  // onChange = (date) => this.setState({ date });
 
   render() {
     return (
@@ -41,7 +32,7 @@ class AddDate extends Component {
             placeholder="Date of Show"
             type="date"
             value={this.props.store.date}
-            onChange={(event) => this.onChange(event)}
+            onChange={(event) => this.onChangeHandler(event)}
           ></input>
           <button onClick={this.submitDate}>Submit Date</button>
         </form>

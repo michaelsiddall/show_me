@@ -11,12 +11,6 @@ class AddVenue extends Component {
     search: "",
   };
 
-  // componentDidMount = () => {
-  //   console.log("in componentDidMount");
-
-  //   this.getVenues();
-  // };
-
   searchVenues = () => {
     this.props.dispatch({
       type: "SEARCH_VENUE",
@@ -38,7 +32,6 @@ class AddVenue extends Component {
       type: "SET_SONGKICK_ID",
       payload: songKickId,
     });
-    // this.getVenues();
   };
 
   onNext = () => {
@@ -46,37 +39,13 @@ class AddVenue extends Component {
     if (this.props.store.venues === "") {
       alert("Please select an VENUE");
     } else {
-      this.props.history.push("/addShow");
+      this.props.history.push("/addReview");
     }
   };
 
-  // th
-
-  // getVenues = () => {
-  //   this.props.dispatch({
-  //     type: "FETCH_VENUES",
-  //   });
-  // };
-
   render() {
     return (
-      // Can also just use <> </> instead of divs
-
       <div>
-        {/* <List>
-          <h1>My Saved Venues</h1>
-          {this.props.store.getVenues.map((venue) => {
-            const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
-            return (
-              <ListItem key={labelId} button>
-                <ListItemText id={venue.songKickId} primary={venue.name} />
-                <ListItemText primary={venue.address} />
-                <ListItemText primary={venue.city} />
-                <ListItemText primary={venue.songKickId} />
-              </ListItem>
-            );
-          })}
-        </List> */}
         <h1>Search Venues</h1>
         <input
           placeholder="Search Venue on SongKick"
@@ -103,9 +72,6 @@ class AddVenue extends Component {
                 button
                 onClick={() => this.addVenues(venue.songKickId, venue.name)}
               >
-                {/* <ListItemAvatar>
-                  <Avatar alt="band" src={artist.image} />
-                </ListItemAvatar> */}
                 <ListItemText id={venue.songKickId} primary={venue.name} />
                 <ListItemText primary={venue.address} />
                 <ListItemText primary={venue.city} />
