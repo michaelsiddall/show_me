@@ -45,12 +45,11 @@ class AddArtist extends Component {
     console.log("this is the spotifyId of selected artist", spotifyId, name);
     console.log("this.props.store.spotifyId", "this.props.store.spotifyId");
 
-    alert(`You selected ${(spotifyId, name)}`);
     this.props.dispatch({
       type: "SET_SPOTIFY_ID",
       payload: spotifyId,
     });
-    // this.getArtist();
+    this.props.history.push("/addVenue");
   };
 
   // getArtist = () => {
@@ -129,7 +128,7 @@ class AddArtist extends Component {
           })}
         </List>
 
-        <button onClick={this.onNext}>Submit Artist</button>
+        {/* <button onClick={this.onNext}>Submit Artist</button> */}
       </div>
     );
   }

@@ -42,18 +42,9 @@ class ShowList extends Component {
       url: `/showList/${event}`,
     });
     this.getShows();
-    // .then((res) => {
-    //   console.log("Your show was deleted!");
-    //   res.sendStatus(201);
-    // })
-    // .catch(function (err) {
-    //   console.log("Error in delete", err);
-    // });
   };
 
   render() {
-    console.log("state is", this.state.shows);
-
     return (
       <div>
         <List>

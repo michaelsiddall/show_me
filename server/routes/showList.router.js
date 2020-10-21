@@ -95,6 +95,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     .query('DELETE FROM "concert" WHERE id=$1', [req.params.id])
     .then((result) => {
       res.sendStatus(200);
+      console.log("The show as successfully deleted");
     })
     .catch((error) => {
       console.log("Show couldn't be deleted", error);

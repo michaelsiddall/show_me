@@ -27,21 +27,19 @@ class AddVenue extends Component {
 
   addVenues = (songKickId, name) => {
     console.log("this is the songKickId of selected venue", songKickId);
-    alert(`You selected ${(songKickId, name)}`);
+    // alert(`You selected ${(songKickId, name)}`);
     this.props.dispatch({
       type: "SET_SONGKICK_ID",
       payload: songKickId,
     });
+    this.props.history.push("/addShow");
   };
 
-  onNext = () => {
-    console.log("this.props.history", this.props.history);
-    if (this.props.store.venues === "") {
-      alert("Please select an VENUE");
-    } else {
-      this.props.history.push("/addReview");
-    }
-  };
+  // onNext = () => {
+  //   console.log("this.props.history", this.props.history);
+
+  //   }
+  // };
 
   render() {
     return (
@@ -80,7 +78,7 @@ class AddVenue extends Component {
             );
           })}
         </List>
-        <button onClick={this.onNext}>Submit Venue and Proceed</button>
+        {/* <button onClick={this.onNext}>Submit Venue and Proceed</button> */}
       </div>
     );
   }
