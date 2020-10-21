@@ -37,28 +37,14 @@ class ShowList extends Component {
       });
   };
 
-  // deleteShow = () => {
-  //   console.log("this show to delete", this.state.show);
-  // };
-
   render() {
     console.log("state is", this.state.shows);
     console.log("showId is", this.state.shows);
 
     return (
       <div>
-        {/* <h1>Show List</h1>
-        <ul>
-          {this.state.shows.map((show) => (
-            <li key={show.showId}>
-              <h1>{show.artistName}</h1> <h2>{show.venueName}</h2>{" "}
-              <h3>{show.date}</h3>
-            </li>
-          ))}
-        </ul> */}
-
         <List>
-          <h3>Click on an Artist to Add and click Submit</h3>
+          <h3>SHOW LIST</h3>
           {this.state.shows.map((show) => {
             const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
