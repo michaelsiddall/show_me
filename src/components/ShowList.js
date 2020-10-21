@@ -40,16 +40,15 @@ class ShowList extends Component {
     axios({
       method: "DELETE",
       url: `/showList/${event}`,
-    })
-      .then(function (response) {
-        console.log("Your show was deleted!", response);
-
-        // TODO: // Refresh page (aka do another GET request)
-      })
-      .catch(function (err) {
-        console.log("Error in delete", err);
-        alert("ruh-roh");
-      });
+    });
+    this.getShows();
+    // .then((res) => {
+    //   console.log("Your show was deleted!");
+    //   res.sendStatus(201);
+    // })
+    // .catch(function (err) {
+    //   console.log("Error in delete", err);
+    // });
   };
 
   render() {
