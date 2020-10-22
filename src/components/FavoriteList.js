@@ -68,7 +68,8 @@ class FavoriteList extends Component {
     return (
       <div>
         <List>
-          <h3>FAVORITE LIST</h3>
+          <h3 class="center">MY FAVORITE SHOWS</h3>
+
           {this.state.shows.map((show) => {
             const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
