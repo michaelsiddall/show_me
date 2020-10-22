@@ -20,7 +20,7 @@ class AddShow extends Component {
       .then((response) => {
         console.log("back from POST with:", response);
         alert("Your Show Has Been Saved");
-        this.props.history.push("/showList");
+        this.props.history.push("/showDetails");
       })
       .catch((err) => {
         console.log(err);
