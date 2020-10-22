@@ -7,9 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-// import { response } from "express";
 
-class ShowList extends Component {
+class FavoriteList extends Component {
   state = {
     shows: [],
   };
@@ -31,7 +30,9 @@ class ShowList extends Component {
     axios({
       method: "GET",
       url: "/showList",
-      params: {},
+      params: {
+        favorite: true,
+      },
     })
       .then((response) => {
         console.log("response.data", response.data);
@@ -67,7 +68,7 @@ class ShowList extends Component {
     return (
       <div>
         <List>
-          <h3>SHOW LIST</h3>
+          <h3>FAVORITE LIST</h3>
           {this.state.shows.map((show) => {
             const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
@@ -83,7 +84,7 @@ class ShowList extends Component {
                 <ListItemText primary={show.venueName} />
                 <ListItemText primary={show.date} />
                 {/* <ListItemText primary={show.review} /> */}
-                <button
+                {/* <button
                   onClick={() => {
                     this.favoriteShow(show.showId);
                   }}
@@ -93,7 +94,7 @@ class ShowList extends Component {
 
                 <button onClick={() => this.deleteShow(show.showId)}>
                   Delete Show
-                </button>
+                </button> */}
               </ListItem>
             );
           })}
@@ -103,4 +104,4 @@ class ShowList extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(ShowList);
+export default connect(mapStoreToProps)(FavoriteList);
