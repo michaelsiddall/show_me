@@ -151,8 +151,8 @@ class App extends Component {
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
-              path="/showList"
-              component={ShowList}
+              path="/showDetails"
+              component={ShowDetails}
               // authRedirect="/user"
             />
             <ProtectedRoute
