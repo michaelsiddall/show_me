@@ -27,6 +27,7 @@ import AddDate from "../AddDate";
 import ShowList from "../ShowList";
 import AddReview from "../AddReview";
 import FavoriteList from "../FavoriteList";
+import ShowDetails from "../ShowDetails";
 
 import "./App.css";
 
@@ -170,6 +171,15 @@ class App extends Component {
               exact
               path="/favorite"
               component={FavoriteList}
+              // authRedirect="/user"
+            />
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/showDetails"
+              component={ShowDetails}
               // authRedirect="/user"
             />
 

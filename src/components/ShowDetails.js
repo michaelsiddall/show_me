@@ -7,9 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-// import { response } from "express";
 
-class ShowList extends Component {
+class ShowDetails extends Component {
   state = {
     shows: [],
   };
@@ -107,4 +106,4 @@ class ShowList extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(ShowList);
+export default connect(mapStoreToProps)(ShowDetails);
