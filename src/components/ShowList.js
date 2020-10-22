@@ -12,7 +12,6 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 class ShowList extends Component {
   state = {
     shows: [],
-    isHidden: false,
   };
 
   componentDidMount = () => {
@@ -20,10 +19,21 @@ class ShowList extends Component {
     this.getShows();
   };
 
+  // componentDidUpdate = (prevState) => {
+  //   // If our question ID has changed,
+  //   // we need to re-fetch data from the server (or reset the form)
+  //   if (prevState.shows !== this.state.shows) {
+  //     this.getShows();
+  //   }
+  // };
+
   getShows = () => {
     axios({
       method: "GET",
       url: "/showList",
+      params: {
+        favorite: true,
+      },
     })
       .then((response) => {
         console.log("response.data", response.data);
@@ -74,7 +84,7 @@ class ShowList extends Component {
                 <ListItemText id={show.showId} primary={show.artistName} />
                 <ListItemText primary={show.venueName} />
                 <ListItemText primary={show.date} />
-                <ListItemText primary={show.review} />
+                {/* <ListItemText primary={show.review} /> */}
                 <button
                   onClick={() => {
                     this.favoriteShow(show.showId);
