@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
           params: {
             q: req.query.q,
             type: "artist",
-            limit: "5",
+            limit: "10",
           },
         })
         .then(function (searchResponse) {

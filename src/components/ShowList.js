@@ -84,15 +84,19 @@ class ShowList extends Component {
                 <ListItemText primary={show.date} />
                 {/* <ListItemText primary={show.review} /> */}
                 <button
+                  className="button"
                   onClick={() => {
                     this.favoriteShow(show.showId);
                   }}
                 >
-                  Favorite Show
+                  Favorite
                 </button>
 
-                <button onClick={() => this.deleteShow(show.showId)}>
-                  Delete Show
+                <button
+                  className="button"
+                  onClick={() => this.deleteShow(show.showId)}
+                >
+                  Delete
                 </button>
               </ListItem>
             );

@@ -17,7 +17,7 @@
   /* float: left; */
   color: #f2f2f2;
   background-color: #181617;
-  /* text-align: center; */
+  text-align: center;
   padding: 24px 10px;
   text-decoration: none;
   font-size: 24px;
@@ -32,7 +32,7 @@
 .nav-link:hover {
   background-color: #008183;
 }
-
+/* 
 .nav-right {
   float: right;
-}
+} */
