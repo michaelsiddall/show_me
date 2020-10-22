@@ -8,6 +8,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
+import ShowItem from "./ShowItem/ShowItem";
+
 class ShowDetails extends Component {
   state = {
     shows: [],
@@ -18,13 +20,13 @@ class ShowDetails extends Component {
     this.getShows();
   };
 
-  // componentDidUpdate = (prevState) => {
-  //   // If our question ID has changed,
-  //   // we need to re-fetch data from the server (or reset the form)
-  //   if (prevState.shows !== this.state.shows) {
-  //     this.getShows();
-  //   }
-  // };
+  //   componentDidUpdate = (prevState) => {
+  //     // If our question ID has changed,
+  //     // we need to re-fetch data from the server (or reset the form)
+  //     if (prevState.shows !== this.state.shows) {
+  //       this.getShows();
+  //     }
+  //   };
 
   getShows = () => {
     axios({
@@ -70,18 +72,9 @@ class ShowDetails extends Component {
           {this.state.shows.map((show) => {
             const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
-              <ListItem
-                key={labelId}
-                button
-                // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
-              >
-                <ListItemAvatar>
-                  <Avatar alt="band" src={show.image} />
-                </ListItemAvatar>
-                <ListItemText id={show.showId} primary={show.artistName} />
-                <ListItemText primary={show.venueName} />
-                <ListItemText primary={show.date} />
-                {/* <ListItemText primary={show.review} /> */}
+              <>
+                <ShowItem show={show} />
+
                 <button
                   className="button"
                   onClick={() => {
@@ -97,7 +90,7 @@ class ShowDetails extends Component {
                 >
                   Delete
                 </button>
-              </ListItem>
+              </>
             );
           })}
         </List>
