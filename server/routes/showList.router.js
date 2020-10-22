@@ -14,8 +14,14 @@ let client_secret = process.env.client_secret; // Your secret
  */
 router.get("/", async (req, res) => {
   let queryText, queryParams;
-  queryText = `SELECT * FROM "show" WHERE "user_id" = $1;`;
+  queryText = `SELECT * FROM "show" WHERE "user_id" = $1 ORDER BY "date" DESC;`;
   queryParams = [req.user.id];
+  let favorite = req.query.favorite;
+  console.log("favority q param is", favorite);
+
+  if (favorite) {
+    queryText = `SELECT * FROM "show" WHERE "user_id" = $1 AND "favorite"=true ORDER BY "date" DESC;`;
+  }
 
   const results = await pool.query(queryText, queryParams);
 
@@ -88,14 +94,10 @@ router.get("/", async (req, res) => {
 
   res.send(venueResults);
 });
-/**
- * POST route template
- */
-router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
-});
 
-//PUT
+router.get("/:id");
+
+//  EDIT:  Allow user to "favorite" shows
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   console.log("/showsList PUT:", req.params.id);
   //set up query string
