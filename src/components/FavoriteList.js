@@ -8,6 +8,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
+import moment from "moment";
+
 class FavoriteList extends Component {
   state = {
     shows: [],
@@ -83,7 +85,7 @@ class FavoriteList extends Component {
                 </ListItemAvatar>
                 <ListItemText id={show.showId} primary={show.artistName} />
                 <ListItemText primary={show.venueName} />
-                <ListItemText primary={show.date} />
+                <ListItemText primary={moment(show.date).format("LL")} />
                 {/* <ListItemText primary={show.review} /> */}
                 {/* <button
                   onClick={() => {

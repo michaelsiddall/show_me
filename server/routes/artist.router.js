@@ -13,7 +13,7 @@ const {
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
 let client_secret = process.env.client_secret; // Your secret
 
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("/search GET route");
   console.log("is authenticated?", req.isAuthenticated());

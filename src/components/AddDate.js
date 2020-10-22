@@ -14,6 +14,7 @@ class AddDate extends Component {
 
   submitDate = () => {
     console.log("this.props.store.date is", this.props.store.date);
+
     this.props.history.push("/addArtist");
   };
 
@@ -24,6 +25,7 @@ class AddDate extends Component {
         {/* <h3>Date of the show: {this.props.store.date} </h3> */}
         <form>
           <input
+            id="dateID"
             className="input"
             placeholder="Date of Show"
             type="date"

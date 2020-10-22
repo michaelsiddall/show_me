@@ -4,8 +4,19 @@ const dayjs = require("dayjs");
 const app = express();
 const bodyParser = require("body-parser");
 const sessionMiddleware = require("./modules/session-middleware");
+const axiosRetry = require("axios-retry");
+const axios = require("axios");
 
 const passport = require("./strategies/user.strategy");
+
+// Configure axios to retry
+axiosRetry(axios, {
+  retries: 3,
+  retryDelay: (retryCount) => {
+    console.log("retrying number", retryCount);
+    return retryCount * 1000;
+  },
+});
 
 // Route includes
 const userRouter = require("./routes/user.router");
