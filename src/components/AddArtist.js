@@ -76,21 +76,25 @@ class AddArtist extends Component {
             );
           })}
         </List> */}
-        <h1>Search via Spotify for your Artist</h1>
-        {/* <img
-          src="src/components/images/Spotify_Icon_CMYK_Green.png"
-          height="200px"
-          width="150px"
-        ></img> */}
+
+        <img
+          className="spotify"
+          src="images/Spotify_Icon_CMYK_Green.png"
+          height="50px"
+          width="50px"
+        ></img>
 
         <h3>Artist Search</h3>
         <input
-          placeholder="Search Artist on Spotify"
+          className="input"
+          placeholder="Find Your Artist with Spotify"
           type="text"
           value={this.state.search}
           onChange={(event) => this.onChange(event, "search")}
         ></input>
-        <button onClick={this.searchArtist}>Search </button>
+        <button className="venueBtn" onClick={this.searchArtist}>
+          Search{" "}
+        </button>
         <List>
           <h3>Click on an Artist to Add and click Submit</h3>
           {this.props.store.artists.map((artist) => {

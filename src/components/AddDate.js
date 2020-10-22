@@ -20,16 +20,19 @@ class AddDate extends Component {
   render() {
     return (
       <div>
-        <h1>Select date of the show attended</h1>
-        <h3>Date of the show: {this.props.store.date} </h3>
+        <h3>Select Date of the Show You Attended</h3>
+        {/* <h3>Date of the show: {this.props.store.date} </h3> */}
         <form>
           <input
+            className="input"
             placeholder="Date of Show"
             type="date"
             value={this.props.store.date}
             onChange={(event) => this.onChangeHandler(event)}
           ></input>
-          <button onClick={this.submitDate}>Submit Date</button>
+          <button className="venueBtn" onClick={this.submitDate}>
+            Submit Date
+          </button>
         </form>
       </div>
     );

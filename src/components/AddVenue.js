@@ -46,13 +46,16 @@ class AddVenue extends Component {
       <div>
         <h1>Search Venues</h1>
         <input
-          placeholder="Search Venue on SongKick"
+          className="input"
+          placeholder="Powered by SongKick"
           type="text"
           value={this.state.search}
           onChange={(event) => this.onChangeHandler(event, "search")}
         ></input>
         {"   "}
-        <button onClick={this.searchVenues}>Search Venue</button>
+        <button className="venueBtn" onClick={this.searchVenues}>
+          Search Venue
+        </button>
 
         {/* <h1>Venue: {this.props.store.venue.name}</h1>
         <h1>City: {this.props.store.venue.city}</h1>
