@@ -21,11 +21,10 @@ class ShowDetails extends Component {
   };
 
   //   componentDidUpdate = (prevState) => {
-  //     // If our question ID has changed,
-  //     // we need to re-fetch data from the server (or reset the form)
-  //     if (prevState.shows !== this.state.shows) {
+  //     if (prevState.shows.length !== this.state.shows.length) {
   //       this.getShows();
   //     }
+  //     return;
   //   };
 
   getShows = () => {

@@ -178,8 +178,8 @@ class App extends Component {
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
-              path="/showDetails"
-              component={ShowDetails}
+              path="/showList"
+              component={ShowList}
               // authRedirect="/user"
             />
 
