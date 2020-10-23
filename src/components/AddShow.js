@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 import axios from "axios";
+import swal from "sweetalert";
 
 class AddShow extends Component {
   onSubmit = () => {
@@ -19,7 +20,7 @@ class AddShow extends Component {
     })
       .then((response) => {
         console.log("back from POST with:", response);
-        alert("Your Show Has Been Saved");
+        swal({ text: "Your show has been saved!" });
         this.props.history.push("/showDetails");
       })
       .catch((err) => {

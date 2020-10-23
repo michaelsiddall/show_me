@@ -54,7 +54,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
             return {
               name: artist.name,
               genre: artist.genres[0],
-              image: artist.images[0].url,
+              image: artists.images.length ? artist.images[0].url : null,
               spotifyId: artist.id,
             };
           });

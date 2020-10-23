@@ -47,6 +47,7 @@ class ShowDetails extends Component {
       url: `/showList/${event}`,
     });
     this.getShows();
+    // window.location.reload();
   };
 
   favoriteShow = (event) => {

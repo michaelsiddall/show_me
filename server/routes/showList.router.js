@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 const qs = require("qs");
-const axios = require("axios");
+const axios = require("./axios");
 const axiosRetry = require("axios-retry");
 const {
   rejectUnauthenticated,
