@@ -3,6 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("./axios");
 const qs = require("qs");
+const {getAccessToken} = require('./spotify')
 require("dotenv").config();
 const {
   rejectUnauthenticated,
@@ -19,22 +20,8 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   console.log("is authenticated?", req.isAuthenticated());
   console.log("user", req.user);
 
-  axios({
-    method: "post",
-    url: "https://accounts.spotify.com/api/token",
-    data: qs.stringify({
-      grant_type: "client_credentials",
-    }),
-    headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      Authorization: `Basic ${Buffer.from(
-        `${client_id}:${client_secret}`,
-        "utf8"
-      ).toString("base64")}`,
-    },
-  })
-    .then(function (response) {
-      let accessToken = response.data.access_token;
+  getAccessToken()
+    .then(function (accessToken) {
       console.log("req.query.q is", req.query.q);
       //   res.send(JSON.stringify(req.query));
       axios
