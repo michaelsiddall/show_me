@@ -1,7 +1,7 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
-const axios = require("axios");
+const axios = require("./axios");
 const qs = require("qs");
 require("dotenv").config();
 const {
@@ -54,7 +54,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
             return {
               name: artist.name,
               genre: artist.genres[0],
-              image: artist.images[0].url,
+              image: artist.images.length ? artist.images[0].url : null,
               spotifyId: artist.id,
             };
           });
@@ -62,10 +62,12 @@ router.get("/", rejectUnauthenticated, (req, res) => {
           // res.json(searchResponse.data);
         })
         .catch(function (error) {
+          res.sendStatus(500);
           console.log("Spotify search failed", error);
         });
     })
     .catch(function (error) {
+      res.sendStatus(500);
       console.log("Spotify token failed", error);
     });
 });
