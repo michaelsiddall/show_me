@@ -1,4 +1,6 @@
-const axios = require('axios');
+const axios = require("axios");
+const qs = require("qs");
+require("dotenv").config();
 
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
 let client_secret = process.env.client_secret; // Your secret
@@ -7,7 +9,7 @@ let client_secret = process.env.client_secret; // Your secret
 let accessToken;
 let expiresAt;
 
-function getAccessToken() {
+async function getAccessToken() {
   if (
     // If I have a cached access token
     accessToken &&
@@ -18,7 +20,7 @@ function getAccessToken() {
   }
 
   // Fetch a new one
-  let res = axios({
+  let res = await axios({
     method: "post",
     url: "https://accounts.spotify.com/api/token",
     data: qs.stringify({
@@ -31,7 +33,7 @@ function getAccessToken() {
         "utf8"
       ).toString("base64")}`,
     },
-  })
+  });
 
   // Cache it for later
   accessToken = res.data.access_token;
