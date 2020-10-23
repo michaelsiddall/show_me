@@ -33,16 +33,18 @@ class Reviews extends Component {
       <div>
         <div>
           <label>
-            <div>Show Review...the good, bad, and the ugly</div>
-
+            <h3>Show Review...</h3>
+            <h5>the good, bad, and the ugly</h5>
             <textarea
-              style={{ width: 300, height: 150 }}
+              style={{ width: 400, height: 200 }}
               onChange={(event) => this.onChangeHandler(event, "review")}
             />
           </label>
         </div>
         <div>
-          <button onClick={this.onSubmit}>Submit!</button>
+          <button class="venueBtn" onClick={this.onSubmit}>
+            Submit!
+          </button>
         </div>
       </div>
     );

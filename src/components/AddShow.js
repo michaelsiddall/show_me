@@ -30,9 +30,11 @@ class AddShow extends Component {
   render() {
     return (
       <div>
-        <h1>Your Show Details</h1>
+        <h1>Save Your Show</h1>
 
-        <button onClick={this.onSubmit}>Save Show</button>
+        <button class="venueBtn" onClick={this.onSubmit}>
+          Save
+        </button>
       </div>
     );
   }

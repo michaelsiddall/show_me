@@ -5,9 +5,17 @@
   display: block;
   margin-bottom: 10px;
 }
+textarea {
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.6;
+}
 
 h1,
-h3 {
+h3,
+h5 {
   text-align: center;
 }
 
@@ -39,6 +47,10 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 .spotify {
+  margin: auto;
+  display: block;
+}
+.songkick {
   margin: auto;
   display: block;
 }

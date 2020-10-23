@@ -44,7 +44,14 @@ class AddVenue extends Component {
   render() {
     return (
       <div>
-        <h1>Search Venues</h1>
+        <img
+          className="songkick"
+          src="/images/sk-badge-black.png"
+          alt="songkick"
+          height="50px"
+          width="50px"
+        ></img>
+        <h3>Venue Search</h3>
         <input
           className="input"
           placeholder="Powered by SongKick"
@@ -54,17 +61,11 @@ class AddVenue extends Component {
         ></input>
         {"   "}
         <button className="venueBtn" onClick={this.searchVenues}>
-          Search Venue
+          Search
         </button>
 
-        {/* <h1>Venue: {this.props.store.venue.name}</h1>
-        <h1>City: {this.props.store.venue.city}</h1>
-        <h1>State: {this.props.store.venue.state}</h1>
-
-        <h1>Song Kick ID: {this.props.store.venue.songKickId}</h1> */}
-
         <List>
-          <h3>Click on a Venue to Add"</h3>
+          <h3>Click on a Venue to Submit</h3>
           {this.props.store.venues.map((venue) => {
             const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
             return (

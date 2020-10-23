@@ -57,29 +57,10 @@ class AddArtist extends Component {
       // Can also just use <> </> instead of divs
 
       <div>
-        {/* <List>
-          <h1>My Saved Artists</h1>
-          {this.props.store.getArtists.map((artist) => {
-            const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
-            return (
-              <ListItem
-                key={labelId}
-                button
-                // onClick={() => this.addArtist(artist)}
-              >
-                <ListItemAvatar>
-                  <Avatar alt="band" src={artist.image} />
-                </ListItemAvatar>
-                <ListItemText id={artist.spotifyId} primary={artist.name} />
-                <ListItemText primary={artist.genre} />
-              </ListItem>
-            );
-          })}
-        </List> */}
-
         <img
           className="spotify"
           src="images/Spotify_Icon_CMYK_Green.png"
+          alt="spotify"
           height="50px"
           width="50px"
         ></img>
@@ -96,7 +77,7 @@ class AddArtist extends Component {
           Search{" "}
         </button>
         <List>
-          <h3>Click on an Artist to Add and click Submit</h3>
+          <h3>Click on an Artist to Submit</h3>
           {this.props.store.artists.map((artist) => {
             const labelId = `checkbox-list-secondary-label-${artist.spotifyId}`;
             return (
