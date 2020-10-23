@@ -8,7 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
-import moment from "moment";
+import ShowItem from "./ShowItem/ShowItem";
 
 class FavoriteList extends Component {
   state = {
@@ -20,13 +20,12 @@ class FavoriteList extends Component {
     this.getShows();
   };
 
-  // componentDidUpdate = (prevState) => {
-  //   // If our question ID has changed,
-  //   // we need to re-fetch data from the server (or reset the form)
-  //   if (prevState.shows !== this.state.shows) {
-  //     this.getShows();
-  //   }
-  // };
+  //   componentDidUpdate = (prevState) => {
+  //     if (prevState.shows.length !== this.state.shows.length) {
+  //       this.getShows();
+  //     }
+  //     return;
+  //   };
 
   getShows = () => {
     axios({
@@ -70,35 +69,26 @@ class FavoriteList extends Component {
     return (
       <div>
         <List>
-          <h3 class="center">MY FAVORITE SHOWS</h3>
-
+          <h3>FAVORITE LIST</h3>
           {this.state.shows.map((show) => {
             const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
-              <ListItem
-                key={labelId}
-                button
-                // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
-              >
-                <ListItemAvatar>
-                  <Avatar alt="band" src={show.image} />
-                </ListItemAvatar>
-                <ListItemText id={show.showId} primary={show.artistName} />
-                <ListItemText primary={show.venueName} />
-                <ListItemText primary={moment(show.date).format("LL")} />
-                {/* <ListItemText primary={show.review} /> */}
-                {/* <button
-                  onClick={() => {
-                    this.favoriteShow(show.showId);
-                  }}
-                >
-                  Favorite Show
-                </button>
+              <>
+                <ShowItem show={show} />
 
-                <button onClick={() => this.deleteShow(show.showId)}>
-                  Delete Show
-                </button> */}
-              </ListItem>
+                {/* <div>
+                  <Button size="small" className={classes.margin}>
+                    Small
+                  </Button>
+                </div> */}
+
+                <button
+                  className="button"
+                  onClick={() => this.deleteShow(show.showId)}
+                >
+                  Delete
+                </button>
+              </>
             );
           })}
         </List>
