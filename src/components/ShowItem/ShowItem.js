@@ -6,6 +6,7 @@ import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 
 //Material UI imports
+import ListSubheader from "@material-ui/core/ListSubheader";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -55,11 +56,21 @@ function ShowItem(props) {
           <ListItemAvatar>
             <Avatar alt="band" src={props.show.image} />
           </ListItemAvatar>
+          <ListSubheader component="div" id="subheader">
+            Artist
+          </ListSubheader>
           <ListItemText
             id={props.show.showId}
             primary={props.show.artistName}
           />
+          <ListSubheader component="div" id="subheader">
+            Venue
+          </ListSubheader>
+
           <ListItemText primary={props.show.venueName} />
+          <ListSubheader component="div" id="subheader">
+            Date
+          </ListSubheader>
           <ListItemText primary={moment(props.show.date).format("LL")} />
 
           <button onClick={() => setModalOpen(true)}>Display Details</button>
