@@ -1,10 +1,11 @@
 .nav-title {
   font-size: 50px;
   font-weight: 700;
-
-  color: black;
+  color: #e85c5c;
   padding-left: 10px;
   text-align: center;
+  -webkit-text-stroke: 1px #282828;
+  text-shadow: 0px 4px 4px #282828;
 }
 
 .nav {
@@ -32,9 +33,9 @@
 }
 
 .nav-link:hover {
-  /* background-color: #008183; */
+  background-color: #e85c5c;
 }
-/* 
-.nav-right {
+
+/* .nav-right {
   float: right;
-} */
+}  */

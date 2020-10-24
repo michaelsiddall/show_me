@@ -20,7 +20,7 @@ const Nav = (props) => {
   return (
     <div className="nav">
       <Link to="/showDetails">
-        <h2 className="nav-title">Show Me</h2>
+        <h2 className="nav-title">Show Me!</h2>
       </Link>
       <div className="nav-right">
         {/* Always show this link since the about page is not protected */}
