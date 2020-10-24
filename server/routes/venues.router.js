@@ -3,6 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const qs = require("qs");
 const axios = require("axios");
+const swal = require("sweetalert");
 require("dotenv").config();
 const {
   rejectUnauthenticated,
@@ -45,6 +46,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
       console.error(err);
 
       res.sendStatus(500);
+      swal({ text: "SongKick Venue Search Failed" });
     });
 });
 router.get("/", (req, res) => {

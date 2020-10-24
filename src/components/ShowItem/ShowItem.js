@@ -13,6 +13,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import moment from "moment";
+import Grid from "@material-ui/core/Grid";
 
 // Modal Styling
 function getModalStyle() {
@@ -47,35 +48,39 @@ function ShowItem(props) {
 
   return (
     <div className="event">
+      {/* <Grid item xs={12} md={6}> */}
       <div>
-        <ListItem
-          key={props.show.showId}
-          button
-          // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
-        >
-          <ListItemAvatar>
-            <Avatar alt="band" src={props.show.image} />
-          </ListItemAvatar>
-          <ListSubheader component="div" id="subheader">
-            Artist
-          </ListSubheader>
-          <ListItemText
-            id={props.show.showId}
-            primary={props.show.artistName}
-          />
-          <ListSubheader component="div" id="subheader">
-            Venue
-          </ListSubheader>
+        <List>
+          <ListItem
+            key={props.show.showId}
+            button
+            // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
+          >
+            <ListItemAvatar>
+              <Avatar alt="band" src={props.show.image} />
+            </ListItemAvatar>
+            <ListSubheader component="div" id="subheader">
+              Artist
+            </ListSubheader>
+            <ListItemText
+              id={props.show.showId}
+              primary={props.show.artistName}
+            />
+            <ListSubheader component="div" id="subheader">
+              Venue
+            </ListSubheader>
 
-          <ListItemText primary={props.show.venueName} />
-          <ListSubheader component="div" id="subheader">
-            Date
-          </ListSubheader>
-          <ListItemText primary={moment(props.show.date).format("LL")} />
+            <ListItemText primary={props.show.venueName} />
+            <ListSubheader component="div" id="subheader">
+              Date
+            </ListSubheader>
+            <ListItemText primary={moment(props.show.date).format("LL")} />
 
-          <button onClick={() => setModalOpen(true)}>Display Details</button>
-        </ListItem>
+            <button onClick={() => setModalOpen(true)}>Display Details</button>
+          </ListItem>
+        </List>
       </div>
+      {/* </Grid> */}
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
@@ -84,6 +89,7 @@ function ShowItem(props) {
             width="250
           px"
             src={props.show.image}
+            class="modal"
           />
           <h4> Genre:</h4> <ListItemText primary={props.show.genre} />
           <h4>Review:</h4>

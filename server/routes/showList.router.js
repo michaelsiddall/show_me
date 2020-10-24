@@ -4,6 +4,7 @@ const router = express.Router();
 const qs = require("qs");
 const axios = require("./axios");
 const axiosRetry = require("axios-retry");
+const swal = require("sweetalert");
 require("dotenv").config();
 const {
   rejectUnauthenticated,
@@ -88,6 +89,7 @@ router.get("/", async (req, res) => {
     res.send(venueResults);
   } catch (err) {
     console.error("request failed", err);
+    swal({ text: "Show List failed to load" });
     if (err.response) {
       console.log(err.response.data); // => the response payload
     }

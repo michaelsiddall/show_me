@@ -25,7 +25,7 @@ class AddShow extends Component {
       })
       .catch((err) => {
         console.log(err);
-        alert("problem...");
+        swal({ text: "Your show failed to save.  Please start over" });
       });
   }; //end function
   render() {

@@ -16,13 +16,6 @@ class ShowDetails extends Component {
     this.getShows();
   };
 
-  //   componentDidUpdate = (prevState) => {
-  //     if (prevState.shows.length !== this.state.shows.length) {
-  //       this.getShows();
-  //     }
-  //     return;
-  //   };
-
   getShows = () => {
     axios({
       method: "GET",
@@ -47,7 +40,7 @@ class ShowDetails extends Component {
       url: `/showList/${event}`,
     });
     this.getShows();
-    // window.location.reload();
+    window.location.reload();
   };
 
   favoriteShow = (event) => {
@@ -64,7 +57,7 @@ class ShowDetails extends Component {
     return (
       <div>
         <List>
-          <h3>SHOW LIST</h3>
+          <h2>SHOW LIST</h2>
           {this.state.shows.map((show) => {
             // const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
@@ -79,7 +72,6 @@ class ShowDetails extends Component {
                 >
                   Favorite
                 </button>
-
                 <button
                   className="button"
                   onClick={() => this.deleteShow(show.showId)}
