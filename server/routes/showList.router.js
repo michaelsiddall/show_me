@@ -4,9 +4,11 @@ const router = express.Router();
 const qs = require("qs");
 const axios = require("./axios");
 const axiosRetry = require("axios-retry");
+require("dotenv").config();
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
+const { getAccessToken } = require("./spotify");
 
 let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
 let client_secret = process.env.client_secret; // Your secret
@@ -28,24 +30,10 @@ router.get("/", async (req, res) => {
     const results = await pool.query(queryText, queryParams);
 
     // This is an axios request to get an authorization token from spotify.
-    const authResponse = await axios({
-      method: "post",
-      url: "https://accounts.spotify.com/api/token",
-      timeout: 5000,
-      data: qs.stringify({
-        grant_type: "client_credentials",
-      }),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        Authorization: `Basic ${Buffer.from(
-          `${client_id}:${client_secret}`,
-          "utf8"
-        ).toString("base64")}`,
-      },
-    });
+    const accessToken = await getAccessToken();
 
-    // Declare the accesstoken variable and get it from the auth response.
-    let accessToken = authResponse.data.access_token;
+    // // Declare the accesstoken variable and get it from the auth response.
+    // let accessToken = authResponse.data.access_token;
 
     // Mapping database query to promises that when fulfilled, returns the results
     const promises = results.rows.map(async (row) => {

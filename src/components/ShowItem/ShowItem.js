@@ -79,7 +79,12 @@ function ShowItem(props) {
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <img height="250px" width="250px" src={props.show.image} />
+          <img
+            height="250px"
+            width="250
+          px"
+            src={props.show.image}
+          />
           <h4> Genre:</h4> <ListItemText primary={props.show.genre} />
           <h4>Review:</h4>
           <ListItemText primary={props.show.review} />
