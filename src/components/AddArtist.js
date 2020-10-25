@@ -64,11 +64,12 @@ class AddArtist extends Component {
           height="50px"
           width="50px"
         ></img>
+        <h4>powered by Spotify</h4>
 
         <h3>Artist Search</h3>
         <input
           className="input"
-          placeholder="Find Your Artist with Spotify"
+          placeholder="Enter artist to search"
           type="text"
           value={this.state.search}
           onChange={(event) => this.onChange(event, "search")}

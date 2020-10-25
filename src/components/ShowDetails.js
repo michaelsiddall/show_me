@@ -60,7 +60,6 @@ class ShowDetails extends Component {
         <List>
           <h2>SHOW LIST</h2>
           {this.state.shows.map((show) => {
-            // const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
               <>
                 <ShowItem show={show} />

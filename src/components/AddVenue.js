@@ -52,10 +52,13 @@ class AddVenue extends Component {
           height="50px"
           width="50px"
         ></img>
+        <h4>powered by SongKick</h4>
+        <div></div>
         <h3>Venue Search</h3>
+
         <input
           className="input"
-          placeholder="Powered by SongKick"
+          placeholder="Enter the venue to search"
           type="text"
           value={this.state.search}
           onChange={(event) => this.onChangeHandler(event, "search")}
