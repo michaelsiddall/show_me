@@ -21,13 +21,15 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import AddArtist from "../AddArtist";
 import AddVenue from "../AddVenue";
-import MyArtists from "../MyArtists";
+
 import AddShow from "../AddShow";
 import AddDate from "../AddDate";
-import ShowList from "../ShowList";
+
 import AddReview from "../AddReview";
 import FavoriteList from "../FavoriteList";
 import ShowDetails from "../ShowDetails";
+
+import "fontsource-roboto";
 
 import "./App.css";
 
@@ -90,7 +92,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
+              authRedirect="/showDetails"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -119,15 +121,7 @@ class App extends Component {
               component={AddVenue}
               // authRedirect="/user"
             />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/myArtists"
-              component={MyArtists}
-              // authRedirect="/user"
-            />
+
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

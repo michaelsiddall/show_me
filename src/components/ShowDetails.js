@@ -5,6 +5,7 @@ import axios from "axios";
 import List from "@material-ui/core/List";
 
 import ShowItem from "./ShowItem/ShowItem";
+import swal from "sweetalert";
 
 class ShowDetails extends Component {
   state = {
@@ -68,10 +69,12 @@ class ShowDetails extends Component {
                   className="button"
                   onClick={() => {
                     this.favoriteShow(show.showId);
+                    swal("This show has been added to your Favorites List");
                   }}
                 >
                   Favorite
                 </button>
+
                 <button
                   className="button"
                   onClick={() => this.deleteShow(show.showId)}

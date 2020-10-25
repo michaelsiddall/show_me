@@ -46,7 +46,6 @@ router.get("/", rejectUnauthenticated, (req, res) => {
       console.error(err);
 
       res.sendStatus(500);
-      swal({ text: "SongKick Venue Search Failed" });
     });
 });
 router.get("/", (req, res) => {

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import "fontsource-roboto";
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -14,7 +15,7 @@ const Nav = (props) => {
   if (props.store.user.id != null) {
     loginLinkData.path = "/login";
 
-    loginLinkData.text = "Home";
+    // loginLinkData.text = "Home";
   }
 
   return (

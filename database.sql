@@ -17,7 +17,7 @@ CREATE TABLE "show"
     "date" DATE NOT NULL,
     "spotifyId" VARCHAR (250) NOT NULL,
     "songKickId" INTEGER NOT NULL,
-    "review" VARCHAR (5000),
+    "review" VARCHAR (5000) NOT NULL,
     "user_id" INTEGER NOT NULL,
     "favorite" BOOLEAN
 );

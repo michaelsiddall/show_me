@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("./axios");
 const qs = require("qs");
-const swal = require("sweetalert");
+
 const { getAccessToken } = require("./spotify");
 require("dotenv").config();
 const {
@@ -52,7 +52,6 @@ router.get("/", rejectUnauthenticated, (req, res) => {
         .catch(function (error) {
           res.sendStatus(500);
           console.log("Spotify search failed", error);
-          swal({ text: "Spotify Artist search failed" });
         });
     })
     .catch(function (error) {

@@ -48,46 +48,47 @@ function ShowItem(props) {
 
   return (
     <div className="event">
-      {/* <Grid item xs={12} md={6}> */}
-      <div>
-        <List>
-          <ListItem
-            key={props.show.showId}
-            button
-            // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
-          >
-            <ListItemAvatar>
-              <Avatar alt="band" src={props.show.image} />
-            </ListItemAvatar>
-            <ListSubheader component="div" id="subheader">
-              Artist
-            </ListSubheader>
-            <ListItemText
-              id={props.show.showId}
-              primary={props.show.artistName}
-            />
-            <ListSubheader component="div" id="subheader">
-              Venue
-            </ListSubheader>
+      <Grid item xs={15} md={12}>
+        <div>
+          <List class="list">
+            <ListItem
+              key={props.show.showId}
+              button
+              // onClick={() => this.addArtist(artist.spotifyId, artist.name)}
+            >
+              <ListItemAvatar>
+                <Avatar alt="band" src={props.show.image} />
+              </ListItemAvatar>
+              <ListSubheader component="div" id="subheader">
+                Artist
+              </ListSubheader>
+              <ListItemText
+                id={props.show.showId}
+                primary={props.show.artistName}
+              />
+              <ListSubheader component="div" id="subheader">
+                Venue
+              </ListSubheader>
 
-            <ListItemText primary={props.show.venueName} />
-            <ListSubheader component="div" id="subheader">
-              Date
-            </ListSubheader>
-            <ListItemText primary={moment(props.show.date).format("LL")} />
+              <ListItemText primary={props.show.venueName} />
+              <ListSubheader component="div" id="subheader">
+                Date
+              </ListSubheader>
+              <ListItemText primary={moment(props.show.date).format("LL")} />
 
-            <button onClick={() => setModalOpen(true)}>Display Details</button>
-          </ListItem>
-        </List>
-      </div>
-      {/* </Grid> */}
+              <button onClick={() => setModalOpen(true)}>
+                Display Details
+              </button>
+            </ListItem>
+          </List>
+        </div>
+      </Grid>
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <img
             height="250px"
-            width="250
-          px"
+            width="150px"
             src={props.show.image}
             class="modal"
           />

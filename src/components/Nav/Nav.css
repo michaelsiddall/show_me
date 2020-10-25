@@ -4,25 +4,25 @@
   color: #e85c5c;
   padding-left: 10px;
   text-align: center;
-  -webkit-text-stroke: 1px #282828;
   text-shadow: 0px 4px 4px #282828;
 }
 
 .nav {
-  margin: 0 0 30px;
+  margin: 0 0 10px;
   background-color: #181617;
   overflow: hidden;
   background-image: url("/images/show_me_banner.jpg");
   background-repeat: no-repeat;
-  background-size: 1200px;
+  background-size: 1200px 600px;
 }
 
 .nav-link {
   /* float: left; */
   color: #f2f2f2;
   background-color: #181617;
+
   text-align: center;
-  padding: 10px 50px;
+  padding: 5px 50px;
   text-decoration: none;
   font-size: 20px;
   /* these last two make the logout button in
