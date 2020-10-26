@@ -14,20 +14,22 @@ import Footer from "../Footer/Footer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
-import UserPage from "../UserPage/UserPage";
+// import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import AddArtist from "../AddArtist";
 import AddVenue from "../AddVenue";
-import MyArtists from "../MyArtists";
+
 import AddShow from "../AddShow";
 import AddDate from "../AddDate";
-import ShowList from "../ShowList";
+
 import AddReview from "../AddReview";
 import FavoriteList from "../FavoriteList";
 import ShowDetails from "../ShowDetails";
+
+import "fontsource-roboto";
 
 import "./App.css";
 
@@ -43,7 +45,7 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+            <Redirect exact from="/" to="/showDetails" />
 
             {/* Visiting localhost:3000/about will show the about page. */}
             <Route
@@ -60,8 +62,8 @@ class App extends Component {
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/user"
-              component={UserPage}
+              path="/showDetails"
+              component={ShowDetails}
             />
 
             <ProtectedRoute
@@ -90,7 +92,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
+              authRedirect="/showDetails"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -119,15 +121,7 @@ class App extends Component {
               component={AddVenue}
               // authRedirect="/user"
             />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/myArtists"
-              component={MyArtists}
-              // authRedirect="/user"
-            />
+
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
@@ -173,7 +167,7 @@ class App extends Component {
               component={FavoriteList}
               // authRedirect="/user"
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
@@ -181,7 +175,7 @@ class App extends Component {
               path="/showList"
               component={ShowList}
               // authRedirect="/user"
-            />
+            /> */}
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

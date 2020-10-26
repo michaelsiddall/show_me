@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
 
-import './LandingPage.css';
+import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 class LandingPage extends Component {
   state = {
-    heading: 'Class Component',
+    // heading: "Class Component",
   };
 
   onLogin = (event) => {
-    this.props.history.push('/login');
+    this.props.history.push("/login");
   };
 
   render() {
@@ -24,35 +24,19 @@ class LandingPage extends Component {
         <div className="grid">
           <div className="grid-col grid-col_8">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra
-              lacus ut ex molestie blandit. Etiam et turpis sit amet risus
-              mollis interdum. Suspendisse et justo vitae metus bibendum
-              fringilla sed sed justo. Aliquam sollicitudin dapibus lectus,
-              vitae consequat odio elementum eget. Praesent efficitur eros vitae
-              nunc interdum, eu interdum justo facilisis. Sed pulvinar nulla ac
-              dignissim efficitur. Quisque eget eros metus. Vestibulum bibendum
-              fringilla nibh a luctus. Duis a sapien metus.
+              <h3>Why Don't You Show Me?</h3>
             </p>
-
             <p>
-              Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-              id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-              consectetur placerat pharetra. Aenean gravida ex ut erat commodo,
-              ut finibus metus facilisis. Nullam eget lectus non urna rhoncus
-              accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-              euismod, augue at condimentum rhoncus, massa lorem semper lacus,
-              sed lobortis augue mi vel felis. Duis ultrices sapien at est
-              convallis congue.
-            </p>
-
-            <p>
-              Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-              Suspendisse posuere dapibus maximus. Aliquam vitae felis libero.
-              In vehicula sapien at semper ultrices. Vivamus sed feugiat libero.
-              Sed sagittis neque id diam euismod, ut egestas felis ultricies.
-              Nullam non fermentum mauris. Sed in enim ac turpis faucibus
-              pretium in sit amet nisi.
+              <bold>Show Me</bold> is an app designed for fans of live music.
+              Whether it’s a local band in a tiny dive bar or a sold out 40,000
+              seat arena concert, Show Me allows users to document and organize
+              their live music experiences. Registered users have the ability to
+              write reviews of their concert experiences: Who were you with? How
+              was the sound at the veue? Did the artist play your favorite song?
+              Maybe something personally memorable happened that night? With the
+              power of Spotify’s artist AP and SongKick’s venue APII, users can
+              quickly and easily add their favorite bands and capture not only
+              their musical memories, but the life that was lived inside them.
             </p>
           </div>
           <div className="grid-col grid-col_4">

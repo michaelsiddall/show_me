@@ -16,13 +16,6 @@ class FavoriteList extends Component {
     this.getShows();
   };
 
-  //   componentDidUpdate = (prevState) => {
-  //     if (prevState.shows.length !== this.state.shows.length) {
-  //       this.getShows();
-  //     }
-  //     return;
-  //   };
-
   getShows = () => {
     axios({
       method: "GET",
@@ -51,16 +44,6 @@ class FavoriteList extends Component {
     this.getShows();
   };
 
-  favoriteShow = (event) => {
-    console.log("favorited this id", event);
-
-    axios({
-      method: "PUT",
-      url: `/showList/${event}`,
-    });
-    // this.getShows();
-  };
-
   render() {
     return (
       <div>
@@ -71,12 +54,6 @@ class FavoriteList extends Component {
             return (
               <>
                 <ShowItem show={show} />
-
-                {/* <div>
-                  <Button size="small" className={classes.margin}>
-                    Small
-                  </Button>
-                </div> */}
 
                 <button
                   className="button"

@@ -1,3 +1,25 @@
+.sweet-warning {
+  background-color: #e0e0e0;
+}
+.genre,
+.review {
+  text-align: left;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.list {
+  justify-content: space-evenly;
+}
+
+.modal {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .input {
   width: 300px;
   text-align: center;
@@ -14,7 +36,9 @@ textarea {
 }
 
 h1,
+h2,
 h3,
+h4,
 h5 {
   text-align: center;
 }
@@ -28,6 +52,7 @@ body,
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background-color: #f2f1f1;
 }
 
 img {
@@ -49,10 +74,12 @@ Button
 .spotify {
   margin: auto;
   display: block;
+  border-radius: 12px;
 }
 .songkick {
   margin: auto;
   display: block;
+  border-radius: 12px;
 }
 
 .button {
@@ -60,11 +87,14 @@ Button
   font-size: 0.5rem;
   display: inline-block;
   margin: 10px;
+  border-radius: 12px;
 }
-.venueBtn {
+.venueBtn,
+.diplayDetailsBtn {
   margin: auto;
   display: block;
   background-color: #e0e0e0;
+  border-radius: 12px;
 }
 .btn {
   display: inline-block;
@@ -72,8 +102,8 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #e0e0e0;
+  color: black;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -95,7 +125,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #e0e0e0;
   text-decoration: none;
 }
 
@@ -112,8 +142,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 /* --------------------------------------------------------------------------------

@@ -5,6 +5,7 @@ import axios from "axios";
 import List from "@material-ui/core/List";
 
 import ShowItem from "./ShowItem/ShowItem";
+import swal from "sweetalert";
 
 class ShowDetails extends Component {
   state = {
@@ -15,13 +16,6 @@ class ShowDetails extends Component {
     console.log("in componentDidMount");
     this.getShows();
   };
-
-  //   componentDidUpdate = (prevState) => {
-  //     if (prevState.shows.length !== this.state.shows.length) {
-  //       this.getShows();
-  //     }
-  //     return;
-  //   };
 
   getShows = () => {
     axios({
@@ -47,6 +41,7 @@ class ShowDetails extends Component {
       url: `/showList/${event}`,
     });
     this.getShows();
+    window.location.reload();
   };
 
   favoriteShow = (event) => {
@@ -63,9 +58,8 @@ class ShowDetails extends Component {
     return (
       <div>
         <List>
-          <h3>SHOW LIST</h3>
+          <h2>SHOW LIST</h2>
           {this.state.shows.map((show) => {
-            // const labelId = `checkbox-list-secondary-label-${show.showId}`;
             return (
               <>
                 <ShowItem show={show} />
@@ -74,6 +68,7 @@ class ShowDetails extends Component {
                   className="button"
                   onClick={() => {
                     this.favoriteShow(show.showId);
+                    swal("This show has been added to your Favorites List");
                   }}
                 >
                   Favorite

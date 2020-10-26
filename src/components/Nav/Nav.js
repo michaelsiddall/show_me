@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import "fontsource-roboto";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -12,23 +15,18 @@ const Nav = (props) => {
   };
 
   if (props.store.user.id != null) {
-    loginLinkData.path = "/user";
-    loginLinkData.text = "Home";
+    loginLinkData.path = "/login";
+
+    // loginLinkData.text = "Home";
   }
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Show Me</h2>
+      <Link to="/showDetails">
+        <h2 className="nav-title">Show Me!</h2>
       </Link>
+
       <div className="nav-right">
-        {/* Always show this link since the about page is not protected */}
-        <Link className="nav-link" to={loginLinkData.path}>
-          {/* Show this link if they are logged in or not,
-          but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
-          {loginLinkData.text}
-        </Link>
         <Link className="nav-link" to="/favorite">
           Favorites
         </Link>
