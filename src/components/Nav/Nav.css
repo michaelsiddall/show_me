@@ -7,13 +7,18 @@
   text-shadow: 0px 4px 4px #282828;
 }
 
+a {
+  text-decoration: none;
+}
+
 .nav {
   margin: 0 0 10px;
   background-color: #181617;
   overflow: hidden;
-  background-image: url("/images/show_me_banner.jpg");
+  background-image: url("/images/show_me_banner_6.jpeg");
+  /* background-image: url("/images/show_me_banner.jpg"); */
   background-repeat: no-repeat;
-  background-size: 1200px 600px;
+  background-size: 1200px 325px;
 }
 
 .nav-link {
