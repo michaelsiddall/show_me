@@ -8,9 +8,6 @@ For many live music fans, saving old concerts ticket stubs was a way to reconnec
 their live music experiences. Registered users have the ability to write reviews of their concert experiences: Who were you with? How was the sound at the venue? Did the artist play your favorite song?  Maybe something personally memorable happened that night? With the power of Spotify’s Artist Search API and SongKick’s Venue Search API, users can quickly and easily add their favorite bands and venue information and capture not only
 their musical memories, but the life that was lived inside of them.
 
-For many live music fans, saving old concerts ticket stubs was a way to reconnect with the memories of a musical experience. As technology has evolved, tickets have gone digital and so with it that direct connection or trigger to those memories. Show Me! is an app designed for fans of live music. Whether it’s a local band in a tiny dive bar or a sold out 40,000 seat arena concert, Show Me allows users to document and organize
-their live music experiences. Registered users have the ability to write reviews of their concert experiences: Who were you with? How was the sound at the venue? Did the artist play your favorite song? Maybe something personally memorable happened that night? With the power of Spotify’s Artist Search API and SongKick’s Venue Search API, users can quickly and easily add their favorite bands and venue information and capture not only
-their musical memories, but the life that was lived inside of them.
 
 ## Prerequisites
 
