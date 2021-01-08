@@ -22,7 +22,6 @@ To run this app, you will need…
 (a full list of dependencies can be found in `package.json`)
 
 
-
 ## Install
 
 To run this application:
@@ -72,6 +71,12 @@ In “Review” page, user is able to enter in any information they want to incl
 In Show List, your newly added show will display based on it’s date with the list being displayed Newest to Oldest dates.  
 
 Users are able to delete shows or  click “favorite” button to include that show in the “Favorites” page.  
+
+## Deployement
+
+All are welcome to experience Show Me! first hand by simply registering as a user from the URL below.
+
+http://showmelive.herokuapp.com/
 
 ## Built With
 
