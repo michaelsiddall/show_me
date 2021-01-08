@@ -28,6 +28,8 @@
   margin: auto;
   display: block;
   margin-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
 }
 textarea {
   margin: auto;
