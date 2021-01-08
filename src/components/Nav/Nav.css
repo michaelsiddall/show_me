@@ -1,10 +1,11 @@
 .nav-title {
-  font-size: 50px;
+  font-size: 70px;
   font-weight: 700;
   color: #e85c5c;
-  padding-left: 10px;
+  padding-left: 5px;
   text-align: center;
   text-shadow: 0px 4px 4px #282828;
+  font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -15,10 +16,13 @@ a {
   margin: 0 0 10px;
   background-color: #181617;
   overflow: hidden;
-  background-image: url("/images/show_me_banner_6.jpeg");
+  background-image: url('/images/show_me_banner_6.jpeg');
   /* background-image: url("/images/show_me_banner.jpg"); */
   background-repeat: no-repeat;
   background-size: 1200px 325px;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
 .nav-link {
@@ -41,6 +45,7 @@ a {
   background-color: #e85c5c;
 }
 
-/* .nav-right {
-  float: right;
-}  */
+.nav-right {
+  display: block;
+  width: 100%;
+}

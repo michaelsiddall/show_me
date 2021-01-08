@@ -12,7 +12,9 @@
 }
 
 .list {
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal {
@@ -31,7 +33,7 @@ textarea {
   margin: auto;
   display: block;
   margin-bottom: 10px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   line-height: 1.6;
 }
 
@@ -50,7 +52,7 @@ body,
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   background-color: #f2f1f1;
 }
@@ -84,10 +86,10 @@ Button
 
 .button {
   background-color: #e0e0e0;
-  font-size: 0.5rem;
+  font-size: 1 rem;
   display: inline-block;
   margin: 10px;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 .venueBtn,
 .diplayDetailsBtn {

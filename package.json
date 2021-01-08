@@ -21,7 +21,7 @@
     "moment": "^2.29.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.3.0",
+    "pg": "^8.4.1",
     "prop-types": "^15.7.2",
     "qs-stringify": "^1.2.1",
     "react": "^16.8.6",
