@@ -9,13 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: "100%",
-//     maxWidth: 360,
-//     backgroundColor: theme.palette.background.paper,
-//   },
-// }));
+
 
 class AddArtist extends Component {
   state = {

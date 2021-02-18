@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from './../redux/mapStoreToProps';
 import axios from 'axios';
 import List from '@material-ui/core/List';
+import swal from 'sweetalert';
 
 import ShowItem from './ShowItem/ShowItem';
 
@@ -36,6 +37,19 @@ class FavoriteList extends Component {
       });
   };
 
+  favoriteShow = (event) => {
+    console.log('favorited this id', event);
+
+    axios({
+      method: 'PUT',
+      url: `/showList/${event}`,
+      params: {
+        favorite: false,
+      },
+    });
+    // this.getShows();
+  };
+
   deleteShow = (event) => {
     axios({
       method: 'DELETE',
@@ -54,7 +68,15 @@ class FavoriteList extends Component {
             return (
               <>
                 <ShowItem show={show} />
-
+                <button
+                  className='button'
+                  onClick={() => {
+                    this.favoriteShow(show.showId);
+                    swal('This show has been removed from your Favorites List');
+                  }}
+                >
+                  Favorite
+                </button>
                 <button
                   className='button'
                   onClick={() => this.deleteShow(show.showId)}
