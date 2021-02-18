@@ -8,9 +8,6 @@ For many live music fans, saving old concerts ticket stubs was a way to reconnec
 their live music experiences. Registered users have the ability to write reviews of their concert experiences: Who were you with? How was the sound at the venue? Did the artist play your favorite song?  Maybe something personally memorable happened that night? With the power of Spotify’s Artist Search API and SongKick’s Venue Search API, users can quickly and easily add their favorite bands and venue information and capture not only
 their musical memories, but the life that was lived inside of them.
 
-For many live music fans, saving old concerts ticket stubs was a way to reconnect with the memories of a musical experience. As technology has evolved, tickets have gone digital and so with it that direct connection or trigger to those memories. Show Me! is an app designed for fans of live music. Whether it’s a local band in a tiny dive bar or a sold out 40,000 seat arena concert, Show Me allows users to document and organize
-their live music experiences. Registered users have the ability to write reviews of their concert experiences: Who were you with? How was the sound at the venue? Did the artist play your favorite song? Maybe something personally memorable happened that night? With the power of Spotify’s Artist Search API and SongKick’s Venue Search API, users can quickly and easily add their favorite bands and venue information and capture not only
-their musical memories, but the life that was lived inside of them.
 
 ## Prerequisites
 
@@ -22,40 +19,41 @@ To run this app, you will need…
 (a full list of dependencies can be found in `package.json`)
 
 
-
 ## Install
 
 To run this application:
 
 -create a database in Postgress called ‘show_me’ and create a “user” table and “show” table.
 
-CREATE TABLE "user" (
+`CREATE TABLE "user" (
 "id" SERIAL PRIMARY KEY,
 "username" VARCHAR (80) UNIQUE NOT NULL,
 "password" VARCHAR (1000) NOT NULL
-);
+);`
 
-CREATE TABLE "show" (
+`CREATE TABLE "show" (
     "id" SERIAL PRIMARY KEY,
     "date" DATE NOT NULL,
     "spotifyId" VARCHAR (250) NOT NULL,
     "songKickId" INTEGER  NOT NULL,
     "review" VARCHAR (5000),
     "user_id" INTEGER NOT NULL,
-    "favorite" BOOLEAN
+    "favorite" BOOLEAN`
 );
 
 Start postgres if not running already by using `brew services start postgresql`
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
 
-  SERVER_SESSION_SECRET=superDuperSecret
+  `SERVER_SESSION_SECRET=superDuperSecret`
   
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
 
--run “npm install” from the project root directory 
--run “npm run server” to run the node server 
--run “npm run client” to connect to localhost:3000
+run “npm install” from the project root directory 
+
+run “npm run server” to run the node server 
+
+run “npm run client” to connect to localhost:3000
 
 ## Usage
 
@@ -72,6 +70,12 @@ In “Review” page, user is able to enter in any information they want to incl
 In Show List, your newly added show will display based on it’s date with the list being displayed Newest to Oldest dates.  
 
 Users are able to delete shows or  click “favorite” button to include that show in the “Favorites” page.  
+
+## Deployement
+
+All are welcome to experience Show Me! first hand by simply registering as a user from the URL below.
+
+http://showmelive.herokuapp.com/
 
 ## Built With
 
