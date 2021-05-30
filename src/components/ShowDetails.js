@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from './../redux/mapStoreToProps';
-import axios from 'axios';
-import List from '@material-ui/core/List';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "./../redux/mapStoreToProps";
+import axios from "axios";
+import List from "@material-ui/core/List";
 
-import ShowItem from './ShowItem/ShowItem';
-import swal from 'sweetalert';
+import ShowItem from "./ShowItem/ShowItem";
+import swal from "sweetalert";
 
 class ShowDetails extends Component {
   state = {
@@ -13,18 +13,17 @@ class ShowDetails extends Component {
   };
 
   componentDidMount = () => {
-    console.log('in componentDidMount');
     this.getShows();
   };
 
   getShows = () => {
     axios({
-      method: 'GET',
-      url: '/showList',
+      method: "GET",
+      url: "/showList",
       params: {},
     })
       .then((response) => {
-        console.log('response.data', response.data);
+        console.log("response.data", response.data);
 
         this.setState({
           shows: response.data,
@@ -37,7 +36,7 @@ class ShowDetails extends Component {
 
   deleteShow = (event) => {
     axios({
-      method: 'DELETE',
+      method: "DELETE",
       url: `/showList/${event}`,
     });
     this.getShows();
@@ -45,10 +44,8 @@ class ShowDetails extends Component {
   };
 
   favoriteShow = (event) => {
-    console.log('favorited this id', event);
-
     axios({
-      method: 'PUT',
+      method: "PUT",
       url: `/showList/${event}`,
     });
     // this.getShows();
@@ -65,17 +62,17 @@ class ShowDetails extends Component {
                 <ShowItem show={show} />
 
                 <button
-                  className='button'
+                  className="button"
                   onClick={() => {
                     this.favoriteShow(show.showId);
-                    swal('This show has been added to your Favorites List');
+                    swal("This show has been added to your Favorites List");
                   }}
                 >
                   Favorite
                 </button>
 
                 <button
-                  className='button'
+                  className="button"
                   onClick={() => this.deleteShow(show.showId)}
                 >
                   Delete

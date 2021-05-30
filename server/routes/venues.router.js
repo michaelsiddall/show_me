@@ -13,10 +13,6 @@ const {
  * GET route template
  */
 router.get("/", rejectUnauthenticated, (req, res) => {
-  console.log("/venues GET route");
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-  console.log("req.query.query is", req.query.query);
   axios({
     method: "GET",
     url: "https://api.songkick.com/api/3.0/search/venues.json",
@@ -28,9 +24,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     },
   })
     .then((searchVenueResponse) => {
-      console.log("got back data", searchVenueResponse.data);
       let songKickObject = searchVenueResponse.data.resultsPage.results.venue;
-
       let myVenues = songKickObject.map((venue) => {
         return {
           name: venue.displayName,
@@ -44,12 +38,8 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-
       res.sendStatus(500);
     });
-});
-router.get("/", (req, res) => {
-  // GET route code here
 });
 
 /**

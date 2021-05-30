@@ -7,7 +7,6 @@ import swal from "sweetalert";
 
 class AddShow extends Component {
   onSubmit = () => {
-    console.log("in onSubmit");
     axios({
       method: "POST",
       url: "/saveConcert",
@@ -35,7 +34,6 @@ class AddShow extends Component {
     return (
       <div>
         <h3>Save Your Show</h3>
-
         <button class="venueBtn" onClick={this.onSubmit}>
           Save
         </button>

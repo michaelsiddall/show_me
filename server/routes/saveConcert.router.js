@@ -6,23 +6,7 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
-/**
- * GET route template
- */
-router.get("/", (req, res) => {
-  // GET route code here
-});
-
-/**
- * POST route template
- */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
-  console.log("/saveConcert POST route");
-  console.log(req.body.date, req.body.spotifyId, req.body.songKickId);
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-
   if (!req.isAuthenticated()) {
     res.sendStatus(403);
     return;

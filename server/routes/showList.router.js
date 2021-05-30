@@ -1,33 +1,30 @@
-const express = require('express');
-const pool = require('../modules/pool');
+const express = require("express");
+const pool = require("../modules/pool");
 const router = express.Router();
-const qs = require('qs');
-const axios = require('./axios');
-const axiosRetry = require('axios-retry');
+const qs = require("qs");
+const axios = require("./axios");
+const axiosRetry = require("axios-retry");
 
-require('dotenv').config();
+require("dotenv").config();
 const {
   rejectUnauthenticated,
-} = require('../modules/authentication-middleware');
-const { getAccessToken } = require('./spotify');
+} = require("../modules/authentication-middleware");
+const { getAccessToken } = require("./spotify");
 
-let client_id = '9742fa1bfac34acf9ca4950379c182ba'; // Your client id
-let client_secret = process.env.client_secret; // Your secret
 /**
  * GET route template
  */
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     let queryText, queryParams;
     queryText = `SELECT * FROM "show" WHERE "user_id" = $1 ORDER BY "date" DESC;`;
     queryParams = [req.user.id];
     let favorite = req.query.favorite;
-    console.log('favorite q param is', favorite);
+    console.log("favorite q param is", favorite);
 
     if (favorite) {
       queryText = `SELECT * FROM "show" WHERE "user_id" = $1 AND "favorite"=true ORDER BY "date" DESC;`;
     }
-
     const results = await pool.query(queryText, queryParams);
 
     // This is an axios request to get an authorization token from spotify.
@@ -39,7 +36,7 @@ router.get('/', async (req, res) => {
     // Mapping database query to promises that when fulfilled, returns the results
     const promises = results.rows.map(async (row) => {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `https://api.spotify.com/v1/artists/${row.spotifyId}`,
         timeout: 5000,
         headers: {
@@ -59,13 +56,13 @@ router.get('/', async (req, res) => {
     });
 
     const artistResults = await Promise.all(promises);
-    console.log('artistResults are', artistResults);
+    console.log("artistResults are", artistResults);
 
     // Mapping artistResults to promises and making SongKick API call to add venue info
 
     const venuePromises = artistResults.map(async (showData) => {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `https://api.songkick.com/api/3.0/venues/${showData.venueId}.json`,
         timeout: 5000,
         params: {
@@ -84,12 +81,8 @@ router.get('/', async (req, res) => {
       };
     });
     const venueResults = await Promise.all(venuePromises);
-    console.log('venueResults are', venueResults);
-
     res.send(venueResults);
   } catch (err) {
-    console.error('request failed', err);
-
     if (err.response) {
       console.log(err.response.data); // => the response payload
     }
@@ -97,13 +90,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id');
+router.get("/:id");
 
 //  EDIT:  Allow user to "favorite" shows
-router.put('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('/showsList PUT:', req.params.id);
+router.put("/:id", rejectUnauthenticated, (req, res) => {
   //set up query string
-  const queryString = 'UPDATE show SET favorite=true WHERE id=$1';
+  const queryString = "UPDATE show SET favorite=true WHERE id=$1";
   // ask pool to run query
   pool
     .query(queryString, [req.params.id])
@@ -118,12 +110,12 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
     .query('DELETE FROM "show" WHERE id=$1', [req.params.id])
     .then((result) => {
       res.sendStatus(200);
-      console.log('The show as successfully deleted');
+      console.log("The show as successfully deleted");
     })
     .catch((error) => {
       console.log("Show couldn't be deleted", error);

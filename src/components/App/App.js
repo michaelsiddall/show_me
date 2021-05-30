@@ -24,13 +24,10 @@ import AddVenue from "../AddVenue";
 
 import AddShow from "../AddShow";
 import AddDate from "../AddDate";
-
 import AddReview from "../AddReview";
 import FavoriteList from "../FavoriteList";
 import ShowDetails from "../ShowDetails";
-
 import "fontsource-roboto";
-
 import "./App.css";
 
 class App extends Component {
@@ -77,105 +74,31 @@ class App extends Component {
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
             <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LoginPage at /login
               exact
               path="/login"
               component={LoginPage}
               authRedirect="/user"
             />
             <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows RegisterPage at "/registration"
               exact
               path="/registration"
               component={RegisterPage}
               authRedirect="/showDetails"
             />
             <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
               exact
               path="/home"
               component={LandingPage}
               authRedirect="/user"
             />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/addArtist"
-              component={AddArtist}
-              // authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/addVenue"
-              component={AddVenue}
-              // authRedirect="/user"
-            />
 
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/addShow"
-              component={AddShow}
-              // authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/addDate"
-              component={AddDate}
-              // authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/showDetails"
-              component={ShowDetails}
-              // authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/addReview"
-              component={AddReview}
-              // authRedirect="/user"
-            />
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/favorite"
-              component={FavoriteList}
-              // authRedirect="/user"
-            />
-            {/* <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/showList"
-              component={ShowList}
-              // authRedirect="/user"
-            /> */}
+            <ProtectedRoute exact path="/addArtist" component={AddArtist} />
+            <ProtectedRoute exact path="/addVenue" component={AddVenue} />
+            <ProtectedRoute exact path="/addShow" component={AddShow} />
+            <ProtectedRoute exact path="/addDate" component={AddDate} />
+            <ProtectedRoute exact path="/showDetails" component={ShowDetails} />
+            <ProtectedRoute exact path="/addReview" component={AddReview} />
+            <ProtectedRoute exact path="/favorite" component={FavoriteList} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

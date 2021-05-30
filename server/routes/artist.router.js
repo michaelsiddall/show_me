@@ -10,21 +10,9 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
-//  * GET route template
-
-let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
-let client_secret = process.env.client_secret; // Your secret
-
 router.get("/", rejectUnauthenticated, (req, res) => {
-  // GET route code here
-  console.log("/search GET route");
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-
   getAccessToken()
     .then(function (accessToken) {
-      console.log("req.query.q is", req.query.q);
-      //   res.send(JSON.stringify(req.query));
       axios
         .get("https://api.spotify.com/v1/search", {
           headers: {
@@ -47,7 +35,6 @@ router.get("/", rejectUnauthenticated, (req, res) => {
             };
           });
           res.json({ artists: myArtists });
-          // res.json(searchResponse.data);
         })
         .catch(function (error) {
           res.sendStatus(500);
@@ -60,16 +47,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-/**
- * POST route template
- */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
-  console.log("/artist POST route");
-  console.log(req.body);
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-
   if (!req.isAuthenticated()) {
     res.sendStatus(403);
     return;

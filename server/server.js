@@ -1,12 +1,9 @@
 const express = require("express");
 require("dotenv").config();
-const dayjs = require("dayjs");
 const app = express();
-const bodyParser = require("body-parser");
 const sessionMiddleware = require("./modules/session-middleware");
 const axiosRetry = require("axios-retry");
 const axios = require("axios");
-
 const passport = require("./strategies/user.strategy");
 
 // Configure axios to retry
@@ -25,9 +22,9 @@ const searchVenuesRouter = require("./routes/venues.router");
 const saveConcertRouter = require("./routes/saveConcert.router");
 const showListRouter = require("./routes/showList.router");
 
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Body parser deprecated; updated
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);

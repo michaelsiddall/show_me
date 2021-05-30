@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-// import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-
-
 
 class AddArtist extends Component {
   state = {
@@ -31,7 +28,6 @@ class AddArtist extends Component {
   };
 
   addArtist = (spotifyId, name) => {
-    console.log("this is the spotifyId of selected artist", spotifyId, name);
     this.props.dispatch({
       type: "SET_SPOTIFY_ID",
       payload: spotifyId,
@@ -40,16 +36,11 @@ class AddArtist extends Component {
   };
 
   onNext = () => {
-    console.log("this.props.history", this.props.history);
     this.props.history.push("/addVenue");
   };
 
   render() {
-    console.log("state", this.props.store);
-
     return (
-      // Can also just use <> </> instead of divs
-
       <div>
         <img
           className="spotify"
@@ -90,13 +81,9 @@ class AddArtist extends Component {
             );
           })}
         </List>
-
-        {/* <button onClick={this.onNext}>Submit Artist</button> */}
       </div>
     );
   }
 }
 
 export default connect(mapStoreToProps)(withRouter(AddArtist));
-
-// Don't forget to import Component into parent Component

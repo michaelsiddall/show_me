@@ -5,7 +5,6 @@ import mapStoreToProps from "./../redux/mapStoreToProps";
 
 class AddDate extends Component {
   onChangeHandler = (event) => {
-    console.log("this.props.store.date is", this.props.store.date);
     this.props.dispatch({
       type: "SET_DATE",
       payload: event.target.value,
@@ -13,8 +12,6 @@ class AddDate extends Component {
   };
 
   submitDate = () => {
-    console.log("this.props.store.date is", this.props.store.date);
-
     this.props.history.push("/addArtist");
   };
 

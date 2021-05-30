@@ -26,8 +26,6 @@ class AddVenue extends Component {
   };
 
   addVenues = (songKickId, name) => {
-    console.log("this is the songKickId of selected venue", songKickId);
-    // alert(`You selected ${(songKickId, name)}`);
     this.props.dispatch({
       type: "SET_SONGKICK_ID",
       payload: songKickId,
@@ -35,12 +33,6 @@ class AddVenue extends Component {
 
     this.props.history.push("/addReview");
   };
-
-  // onNext = () => {
-  //   console.log("this.props.history", this.props.history);
-
-  //   }
-  // };
 
   render() {
     return (
@@ -86,7 +78,6 @@ class AddVenue extends Component {
             );
           })}
         </List>
-        {/* <button onClick={this.onNext}>Submit Venue and Proceed</button> */}
       </div>
     );
   }
