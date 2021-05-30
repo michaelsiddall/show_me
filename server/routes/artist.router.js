@@ -13,6 +13,8 @@ const {
 router.get("/", rejectUnauthenticated, (req, res) => {
   getAccessToken()
     .then(function (accessToken) {
+      console.log("req.query.q is", req.query.q);
+      //   res.send(JSON.stringify(req.query));
       axios
         .get("https://api.spotify.com/v1/search", {
           headers: {
