@@ -19,7 +19,6 @@ class AddDate extends Component {
     return (
       <div>
         <h3>Select Date of the Show You Attended</h3>
-        {/* <h3>Date of the show: {this.props.store.date} </h3> */}
         <form>
           <input
             id="dateID"

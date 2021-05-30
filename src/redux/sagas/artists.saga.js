@@ -26,15 +26,12 @@ function* searchArtist(action) {
 }
 
 function* fetchArtist(action) {
-  // console.log("in fetchArtist Saga");
   let response = yield axios({
     method: "GET",
     url: "/artist",
   });
-  console.log("back from fetch GET", response.data);
   yield put({
     type: "GET_ARTIST",
-
     payload: response.data,
   });
 }

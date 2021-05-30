@@ -18,7 +18,6 @@ class AddShow extends Component {
       },
     })
       .then((response) => {
-        console.log("back from POST with:", response);
         swal({
           text: "Your show has been saved!",
           button: { className: "sweet-warning" },

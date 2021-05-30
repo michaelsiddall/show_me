@@ -7,6 +7,4 @@ const songKickIdReducer = (state = "", action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.artist
 export default songKickIdReducer;

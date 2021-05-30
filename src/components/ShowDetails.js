@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 import axios from "axios";
 import List from "@material-ui/core/List";
-
 import ShowItem from "./ShowItem/ShowItem";
 import swal from "sweetalert";
 
@@ -23,8 +22,6 @@ class ShowDetails extends Component {
       params: {},
     })
       .then((response) => {
-        console.log("response.data", response.data);
-
         this.setState({
           shows: response.data,
         });
@@ -48,7 +45,6 @@ class ShowDetails extends Component {
       method: "PUT",
       url: `/showList/${event}`,
     });
-    // this.getShows();
   };
 
   render() {

@@ -24,8 +24,6 @@ class FavoriteList extends Component {
       },
     })
       .then((response) => {
-        console.log("response.data", response.data);
-
         this.setState({
           shows: response.data,
         });

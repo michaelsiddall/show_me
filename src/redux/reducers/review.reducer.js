@@ -1,6 +1,4 @@
 const reviewReducer = (state = "", action) => {
-  console.log("in reviewReducer", action.payload);
-
   switch (action.type) {
     case "SET_REVIEW":
       return action.payload;
@@ -9,6 +7,4 @@ const reviewReducer = (state = "", action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.artist
 export default reviewReducer;

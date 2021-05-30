@@ -30,7 +30,6 @@ class AddVenue extends Component {
       type: "SET_SONGKICK_ID",
       payload: songKickId,
     });
-
     this.props.history.push("/addReview");
   };
 

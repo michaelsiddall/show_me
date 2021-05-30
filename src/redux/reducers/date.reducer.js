@@ -1,6 +1,4 @@
 const dateReducer = (state = "", action) => {
-  //
-
   switch (action.type) {
     case "SET_DATE":
       return action.payload;
@@ -9,6 +7,4 @@ const dateReducer = (state = "", action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.artist
 export default dateReducer;

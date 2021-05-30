@@ -9,9 +9,6 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
-/**
- * GET route template
- */
 router.get("/", rejectUnauthenticated, (req, res) => {
   axios({
     method: "GET",
@@ -30,7 +27,6 @@ router.get("/", rejectUnauthenticated, (req, res) => {
           name: venue.displayName,
           address: venue.street,
           city: venue.city.displayName,
-          // state: venue.city.state.displayName,
           songKickId: venue.id,
         };
       });
@@ -42,16 +38,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-/**
- * POST route template
- */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
-  console.log("/venues POST route");
-  console.log(req.body);
-  console.log("is authenticated?", req.isAuthenticated());
-  console.log("user", req.user);
-
   if (!req.isAuthenticated()) {
     res.sendStatus(403);
     return;

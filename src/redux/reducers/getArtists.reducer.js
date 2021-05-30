@@ -1,6 +1,4 @@
 const getArtistsReducer = (state = [], action) => {
-  // console.log("getArtistReducer payload is", action.payload);
-
   switch (action.type) {
     case "GET_ARTIST":
       return action.payload;
@@ -9,6 +7,4 @@ const getArtistsReducer = (state = [], action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.artist
 export default getArtistsReducer;

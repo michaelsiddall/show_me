@@ -13,8 +13,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import moment from "moment";
-import GridList from "@material-ui/core/GridList";
-import { FullscreenExit } from "@material-ui/icons";
 
 // Modal Styling
 function getModalStyle() {
