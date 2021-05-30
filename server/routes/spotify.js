@@ -2,8 +2,8 @@ const axios = require("axios");
 const qs = require("qs");
 require("dotenv").config();
 
-let client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
-let client_secret = process.env.client_secret; // Your secret
+const client_id = "9742fa1bfac34acf9ca4950379c182ba"; // Your client id
+const client_secret = process.env.client_secret; // Your secret
 
 // Cache
 let accessToken;
