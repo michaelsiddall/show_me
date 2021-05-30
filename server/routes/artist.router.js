@@ -3,18 +3,18 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const axios = require("./axios");
 const qs = require("qs");
-
 const { getAccessToken } = require("./spotify");
 require("dotenv").config();
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
+const branch_apiKey = process.env.BRANCH_APIKEY;
+
 router.get("/", rejectUnauthenticated, (req, res) => {
+  // gets and submits access token to Spotify API for artist searchs
   getAccessToken()
     .then(function (accessToken) {
-      console.log("req.query.q is", req.query.q);
-      //   res.send(JSON.stringify(req.query));
       axios
         .get("https://api.spotify.com/v1/search", {
           headers: {
@@ -47,6 +47,23 @@ router.get("/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
       console.log("Spotify token failed", error);
     });
+
+  axios({
+    method: "POST",
+    url: "https://api2.branch.io/v2/event/standard",
+    headers: { "content-type": "application/json" },
+    data: {
+      name: "SEARCH",
+      user_data: {
+        os: "unidentified_device",
+        developer_identity: req.user.username,
+      },
+      event_data: {
+        description: req.query.q,
+      },
+      branch_key: branch_apiKey,
+    },
+  });
 });
 
 router.post("/", rejectUnauthenticated, (req, res) => {
