@@ -47,7 +47,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
       console.log("Spotify token failed", error);
     });
-
+  // search term event captured and sent to Branch.io
   axios({
     method: "POST",
     url: "https://api2.branch.io/v2/event/standard",

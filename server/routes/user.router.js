@@ -28,6 +28,7 @@ router.post("/register", async (req, res, next) => {
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 
+  // new user registration event captured and sent to Branch.io
   await Axios({
     method: "POST",
     url: "https://api2.branch.io/v2/event/standard",
