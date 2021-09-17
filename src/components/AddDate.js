@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-
+import { Box, Button } from '@material-ui/core';
 class AddDate extends Component {
   onChangeHandler = (event) => {
     this.props.dispatch({
@@ -27,10 +27,25 @@ class AddDate extends Component {
             type="date"
             value={this.props.store.date}
             onChange={(event) => this.onChangeHandler(event)}
+           
           ></input>
-          <button className="venueBtn" onClick={this.submitDate}>
-            Submit Date
-          </button>
+
+    <Box  sx={{'& button': { m: 1 } }}>
+      <div>
+        <Button size="large" 
+                variant="contained" 
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent:"center",
+                    margin: '0 auto'
+                    }} 
+                  onClick={this.submitDate} >
+          Submit Date
+        </Button>
+      </div>
+    </Box> 
+   
         </form>
       </div>
     );

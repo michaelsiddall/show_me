@@ -36,7 +36,7 @@ class Reviews extends Component {
           </label>
         </div>
         <div>
-          <button class="venueBtn" onClick={this.onSubmit}>
+          <button className="venueBtn" onClick={this.onSubmit}>
             Submit!
           </button>
         </div>
