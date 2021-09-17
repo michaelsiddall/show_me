@@ -7,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-
+import { Box, Button } from '@material-ui/core';
 class AddArtist extends Component {
   state = {
     search: "",
@@ -59,9 +59,22 @@ class AddArtist extends Component {
           value={this.state.search}
           onChange={(event) => this.onChange(event, "search")}
         ></input>
-        <button className="venueBtn" onClick={this.searchArtist}>
-          Search{" "}
-        </button>
+         <Box  sx={{'& button': { m: 1 } }}>
+      <div>
+        <Button size="large" 
+                variant="contained" 
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent:"center",
+                    margin: '0 auto'
+                    }} 
+                onClick={this.searchArtist} >
+           Search{" "}
+        </Button>
+      </div>
+    </Box> 
+    
         <List>
           <h3>Click on an Artist to Submit</h3>
           {this.props.store.artists.map((artist) => {
