@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
-
+import { Box, Button } from '@material-ui/core';
 class Reviews extends Component {
   state = {
     review: "",
@@ -36,9 +36,22 @@ class Reviews extends Component {
           </label>
         </div>
         <div>
-          <button className="venueBtn" onClick={this.onSubmit}>
-            Submit!
-          </button>
+        <Box sx={{ '& button': { m: 1 } }}>
+      <div>  
+        <Button size="large" 
+                variant="contained" 
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent:"center",
+                    margin: '0 auto'
+                    }} 
+                  onClick={this.onSubmit} >
+       Submit
+        </Button>
+      </div>
+    </Box>
+    
         </div>
       </div>
     );

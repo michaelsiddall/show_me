@@ -5,7 +5,7 @@ import mapStoreToProps from "./../redux/mapStoreToProps";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
+import { Box, Button } from '@material-ui/core';
 class AddVenue extends Component {
   state = {
     search: "",
@@ -55,9 +55,21 @@ class AddVenue extends Component {
           onChange={(event) => this.onChangeHandler(event, "search")}
         ></input>
         {"   "}
-        <button className="venueBtn" onClick={this.searchVenues}>
+        <Box  sx={{'& button': { m: 1 } }}>
+      <div>
+        <Button size="large" 
+                variant="contained" 
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent:"center",
+                    margin: '0 auto'
+                    }} 
+                  onClick={this.searchVenues} >
           Search
-        </button>
+        </Button>
+      </div>
+    </Box> 
 
         <List>
           <h3>Click on a Venue to Submit</h3>

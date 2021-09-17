@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import mapStoreToProps from "./../redux/mapStoreToProps";
 import axios from "axios";
 import swal from "sweetalert";
-
+import { Box, Button } from '@material-ui/core';
 class AddShow extends Component {
   onSubmit = () => {
     axios({
@@ -32,10 +32,23 @@ class AddShow extends Component {
   render() {
     return (
       <div>
-        <h3>Save Your Show</h3>
-        <button class="venueBtn" onClick={this.onSubmit}>
-          Save
-        </button>
+       
+        <Box sx={{ '& button': { m: 1 } }}>
+      <div>
+      
+        <Button size="large" 
+                variant="contained" 
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent:"center",
+                    margin: '0 auto'
+                    }} 
+                  onClick={this.onSubmit} >
+     Save Your Show!
+        </Button>
+      </div>
+    </Box>
       </div>
     );
   }
