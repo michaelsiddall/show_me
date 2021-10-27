@@ -22,6 +22,8 @@ router.get("/", async (req, res) => {
     if (favorite) {
       queryText = `SELECT * FROM "show" WHERE "user_id" = $1 AND "favorite"=true ORDER BY "date" DESC;`;
     }
+    
+  
     const results = await pool.query(queryText, queryParams);
 
     // This is an axios request to get an authorization token from spotify.
@@ -91,7 +93,7 @@ router.get("/:id");
 
 //  EDIT:  Allow user to "favorite" shows
 router.put("/:id", rejectUnauthenticated, (req, res) => {
-  const queryString = "UPDATE show SET favorite=true WHERE id=$1";
+  const queryString = "UPDATE show SET favorite = NOT favorite WHERE id=$1";
 
   pool
     .query(queryString, [req.params.id])
