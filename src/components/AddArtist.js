@@ -30,7 +30,7 @@ class AddArtist extends Component {
   addArtist = (spotifyId, name) => {
     this.props.dispatch({
       type: "SET_SPOTIFY_ID",
-      payload: spotifyId,
+      payload: spotifyId,name
     });
     this.props.history.push("/addVenue");
   };

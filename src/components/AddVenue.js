@@ -23,6 +23,8 @@ class AddVenue extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
+    console.log('venue is', event.target.value);
+    
   };
 
   addVenues = (songKickId, name) => {
@@ -74,12 +76,14 @@ class AddVenue extends Component {
         <List>
           <h3>Click on a Venue to Submit</h3>
           {this.props.store.venues.map((venue) => {
+                    console.log(venue.name)
             const labelId = `checkbox-list-secondary-label-${venue.songKickId}`;
             return (
               <ListItem
                 key={labelId}
                 button
                 onClick={() => this.addVenues(venue.songKickId, venue.name)}
+          
               >
                 <ListItemText id={venue.songKickId} primary={venue.name} />
                 <ListItemText primary={venue.address} />
@@ -89,8 +93,11 @@ class AddVenue extends Component {
             );
           })}
         </List>
+
       </div>
+      
     );
+   
   }
 }
 

@@ -28,11 +28,18 @@ class AddShow extends Component {
         console.log(err);
         swal({ text: "Your show failed to save.  Please start over" });
       });
+      console.log('artist name', this.props.store.artists);
+      
   }; //end function
+
+
+  
   render() {
     return (
       <div>
-       
+      {Date(this.props.store.date)}
+      {this.props.store.name}
+      {this.props.store.review}
         <Box sx={{ '& button': { m: 1 } }}>
       <div>
       
