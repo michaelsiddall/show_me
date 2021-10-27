@@ -41,6 +41,7 @@ class FavoriteList extends Component {
         favorite: false,
       },
     });
+    this.getShows();
   };
 
   deleteShow = (event) => {
@@ -65,10 +66,11 @@ class FavoriteList extends Component {
                   className="button"
                   onClick={() => {
                     this.favoriteShow(show.showId);
+                    this.getShows();
                     swal("This show has been removed from your Favorites List");
                   }}
                 >
-                  Favorite
+                  Remove Favorite
                 </button>
                 <button
                   className="button"
